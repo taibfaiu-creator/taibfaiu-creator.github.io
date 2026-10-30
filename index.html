@@ -403,7 +403,7 @@ function ans(q){let s=q.toLowerCase(),a=/[\u0600-\u06ff]/.test(q),k='';if(/conta
 
 /* Public site key is safe in browser code. Backend URL is configured after deployment.
    Never place GEMINI_API_KEY, GROQ_API_KEY or TURNSTILE_SECRET_KEY here. */
-const CHAT_API_BASE_URL = "";
+const CHAT_API_BASE_URL = "https://altayeb-ai-backend.onrender.com";
 const TURNSTILE_SITE_KEY = "0x4AAAAAAFtNrNfG4u5f8F_T";
 const liveAssistant = Boolean(CHAT_API_BASE_URL.trim());
 const modeLabel = document.getElementById('assistantMode');
