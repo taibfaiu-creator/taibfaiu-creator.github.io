@@ -56,3 +56,22 @@ def test_static_last_resort(monkeypatch):
     assert result.status_code == 200
     assert result.json()["source"] == "static"
     assert "غير متاح" in result.json()["answer"]
+
+
+def test_oversized_request_rejected():
+    result = client.post("/api/chat", json={"message": "x" * 17000})
+    assert result.status_code == 413
+
+
+def test_public_mode_without_secret_fails_closed(monkeypatch):
+    monkeypatch.setattr(main, "PUBLIC_DEPLOYMENT", True)
+    monkeypatch.delenv("TURNSTILE_SECRET_KEY", raising=False)
+    result = client.post("/api/chat", json={"message": "Hello"})
+    assert result.status_code == 503
+
+
+def test_public_mode_requires_turnstile_token(monkeypatch):
+    monkeypatch.setattr(main, "PUBLIC_DEPLOYMENT", True)
+    monkeypatch.setenv("TURNSTILE_SECRET_KEY", "fake-test-secret")
+    result = client.post("/api/chat", json={"message": "Hello"})
+    assert result.status_code == 403
