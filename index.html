@@ -403,8 +403,13 @@ function ans(q){let s=q.toLowerCase(),a=/[\u0600-\u06ff]/.test(q),k='';if(/conta
 
 /* Public site key is safe in browser code. Backend URL is configured after deployment.
    Never place GEMINI_API_KEY, GROQ_API_KEY or TURNSTILE_SECRET_KEY here. */
-const CHAT_API_BASE_URL = "https://altayeb-ai-backend.onrender.com";
-const TURNSTILE_SITE_KEY = "0x4AAAAAAFtNrNfG4u5f8F_T";
+const LOCAL_PREVIEW = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const CHAT_API_BASE_URL = LOCAL_PREVIEW
+  ? "http://127.0.0.1:8000"
+  : "https://altayeb-ai-backend.onrender.com";
+const TURNSTILE_SITE_KEY = LOCAL_PREVIEW
+  ? "1x00000000000000000000AA" // Official Cloudflare testing key, never for production
+  : "0x4AAAAAAFtNrNfG4u5f8F_T";
 const liveAssistant = Boolean(CHAT_API_BASE_URL.trim());
 const modeLabel = document.getElementById('assistantMode');
 const verificationArea = document.getElementById('turnstileArea');
