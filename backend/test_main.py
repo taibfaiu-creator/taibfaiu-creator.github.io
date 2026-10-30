@@ -104,3 +104,56 @@ def test_busy_provider_does_not_call_model(monkeypatch):
     response = client.post("/api/chat", json={"message": "Tell me about his work"})
     assert response.status_code == 429
     assert "busy" in response.json()["detail"].lower()
+
+
+def test_turnstile_verification_accepts_valid_domain(monkeypatch):
+    import httpx
+
+    monkeypatch.setattr(main, "PUBLIC_DEPLOYMENT", True)
+    monkeypatch.setenv("TURNSTILE_SECRET_KEY", "test-only-secret")
+    transport = httpx.MockTransport(
+        lambda request: httpx.Response(
+            200, json={"success": True, "hostname": "taibfaiu-creator.github.io"}
+        )
+    )
+    original_client = httpx.AsyncClient
+    monkeypatch.setattr(main.httpx, "AsyncClient",
+                        lambda **kwargs: original_client(transport=transport, **kwargs))
+
+    async def provider(message, history):
+        return "Verified answer"
+
+    monkeypatch.setattr(main, "gemini_answer", provider)
+    response = client.post("/api/chat", json={"message": "About Al-Tayeb", "turnstile_token": "test-token"})
+    assert response.status_code == 200
+    assert response.json()["source"] == "gemini"
+
+
+def test_turnstile_rejects_invalid_expired_and_wrong_domain(monkeypatch):
+    import httpx
+    import pytest
+
+    monkeypatch.setattr(main, "PUBLIC_DEPLOYMENT", True)
+    monkeypatch.setenv("TURNSTILE_SECRET_KEY", "test-only-secret")
+    original_client = httpx.AsyncClient
+    provider_called = []
+
+    async def forbidden_provider(message, history):
+        provider_called.append(True)
+        raise AssertionError("Provider must never run after verification failure")
+
+    monkeypatch.setattr(main, "gemini_answer", forbidden_provider)
+    monkeypatch.setattr(main, "groq_answer", forbidden_provider)
+
+    cases = [
+        {"success": False, "error-codes": ["invalid-input-response"]},
+        {"success": False, "error-codes": ["timeout-or-duplicate"]},
+        {"success": True, "hostname": "untrusted.example"},
+    ]
+    for verification in cases:
+        transport = httpx.MockTransport(lambda request: httpx.Response(200, json=verification))
+        monkeypatch.setattr(main.httpx, "AsyncClient",
+                            lambda **kwargs: original_client(transport=transport, **kwargs))
+        response = client.post("/api/chat", json={"message": "Hello", "turnstile_token": "test-token"})
+        assert response.status_code == 403
+    assert not provider_called
