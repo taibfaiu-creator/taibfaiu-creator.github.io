@@ -179,6 +179,39 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 [data-theme="dark"] .skill-card-header p{color:#bbccdf}
 [data-theme="dark"] .skill-tags span{background:#20364f;border-color:#476480;color:#dfedfc}
 @media(max-width:700px){.skills-grid{grid-template-columns:1fr}.skill-card-wide{grid-column:auto}.skill-card{padding:19px}.skill-card-header{align-items:flex-start}}
+
+/* Career section: distinguish professional experience from education */
+.experience-heading{max-width:760px;margin-bottom:26px}
+.experience-heading h2{margin:0 0 9px}
+.experience-heading>p{color:var(--muted);margin:0}
+.career-layout{display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:start}
+.career-column{min-width:0}
+.career-column-title{display:flex;align-items:center;gap:11px;font-size:1.06rem;margin:0 0 15px}
+.career-icon{display:grid;place-items:center;flex-shrink:0;width:33px;height:33px;border-radius:10px;background:#dcebf7;color:#155b9b;font-size:.75rem;font-weight:850;border:1px solid #bcd3e8}
+.career-card{background:#f0f4f8;border:1px solid #c4d2df;border-radius:19px;padding:24px;box-shadow:0 9px 25px rgba(18,51,92,.05)}
+.career-card-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;margin-bottom:15px}
+.career-type{display:inline-flex;background:#dcece9;color:#176c61;font-size:.69rem;font-weight:850;letter-spacing:.07em;padding:6px 9px;border-radius:100px}
+.career-date{color:#45627e;font-size:.81rem;font-weight:700}
+.career-card h4{font-size:1.3rem;line-height:1.38;margin:0 0 5px;color:#1c3858}
+.career-org{font-size:.9rem;font-weight:750;color:#245f94;margin:0 0 14px}
+.career-card>p:not(.career-org):not(.education-date){color:var(--muted);font-size:.9rem;line-height:1.7}
+.career-points{color:#38536f;padding-left:20px;margin:15px 0 0;display:grid;gap:11px;line-height:1.65;font-size:.9rem}
+.career-points li::marker{color:#1766ae}
+.education-stack{display:grid;gap:13px}
+.education-card{padding:20px 22px}
+.education-card h4{font-size:1.02rem;margin:10px 0 6px}
+.education-card .career-org{margin:0;color:#365b7e;font-size:.85rem}
+.education-date{font-size:.79rem;color:#526b83;font-weight:700;margin:7px 0 0}
+.education-card>p:not(.career-org):not(.education-date){margin:10px 0 0;font-size:.82rem}
+[data-theme="dark"] .career-icon{background:#213f5d;color:#a8d4ff;border-color:#4a7193}
+[data-theme="dark"] .career-card{background:#13263d;border-color:#3d5976;box-shadow:0 10px 25px rgba(0,0,0,.12)}
+[data-theme="dark"] .career-type{background:#174c46;color:#b0eddf}
+[data-theme="dark"] .career-date,[data-theme="dark"] .education-date{color:#bfd0e2}
+[data-theme="dark"] .career-card h4{color:#f1f7ff}
+[data-theme="dark"] .career-org,[data-theme="dark"] .education-card .career-org{color:#b2d6fb}
+[data-theme="dark"] .career-points{color:#d3e1f0}
+[data-theme="dark"] .career-points li::marker{color:#90c4ff}
+@media(max-width:820px){.career-layout{grid-template-columns:1fr;gap:29px}.career-card{padding:21px}}
 </style>
 </head>
 <body>
@@ -256,7 +289,34 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
   <div class="projects" id="projectsList"></div>
   <div class="projects-footer"><button type="button" id="showProjects" class="btn project-more" aria-expanded="false">View all projects ↓</button></div>
 </div></section>
-<section id="experience"><div class="wrap"><h2>Experience & Education</h2><div class="timeline"><div class="item"><h3>Data Scientist · The National Bank (TNB)</h3><p>May 2024 – Present · Financial BI dashboards, automated Python/KNIME workflows, predictive customer analytics, banking chatbot solutions, integrations and customer segmentation.</p></div><div class="item"><h3>Data Science & Artificial Intelligence for the Banking Sector</h3><p>Palestine Banking Institute · 2024–2025 · Banking-focused training in customer analytics, risk/credit concepts, operational intelligence and governance.</p></div><div class="item"><h3>Data Science & Machine Learning Bootcamp</h3><p>AXSOS Academy · 2023–2024 · Intensive training in data science, machine learning, time series, deep learning and computer vision.</p></div><div class="item"><h3>B.S. Electrical Engineering</h3><p>Palestine Technical University of Kadoorie (PTUK) · 2020</p></div></div></div></section>
+<section id="experience"><div class="wrap">
+  <div class="experience-heading"><span class="section-eyebrow">CAREER &amp; LEARNING</span><h2>Experience &amp; Education</h2><p>Professional work in banking data science, supported by an engineering background and specialized AI training.</p></div>
+  <div class="career-layout">
+    <div class="career-column">
+      <h3 class="career-column-title"><span class="career-icon" aria-hidden="true">01</span> Professional Experience</h3>
+      <article class="career-card">
+        <div class="career-card-top"><span class="career-type">CURRENT ROLE</span><span class="career-date">May 2024 – Present</span></div>
+        <h4>Data Scientist</h4>
+        <p class="career-org">The National Bank (TNB) · Palestine</p>
+        <p>Applying data science and analytics to banking use cases, with a focus on actionable insights and practical AI solutions.</p>
+        <ul class="career-points">
+          <li>Financial reporting dashboards with Power BI, including management indicators.</li>
+          <li>Automated analytics and data workflows using Python and KNIME.</li>
+          <li>Banking customer-service chatbot and API-connected workflows.</li>
+          <li>Customer analytics, predictive modeling, and customer segmentation.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="career-column">
+      <h3 class="career-column-title"><span class="career-icon" aria-hidden="true">02</span> Education &amp; Professional Training</h3>
+      <div class="education-stack">
+        <article class="career-card education-card"><span class="career-type">ACADEMIC DEGREE</span><h4>B.S. Electrical Engineering</h4><p class="career-org">Palestine Technical University of Kadoorie (PTUK)</p><p class="education-date">2020</p></article>
+        <article class="career-card education-card"><span class="career-type">SPECIALIZED TRAINING</span><h4>Data Science &amp; Artificial Intelligence for the Banking Sector</h4><p class="career-org">Palestine Banking Institute</p><p class="education-date">2024–2025</p></article>
+        <article class="career-card education-card"><span class="career-type">BOOTCAMP</span><h4>Data Science &amp; Machine Learning</h4><p class="career-org">AXSOS Academy</p><p class="education-date">2023–2024</p><p>Intensive training in analytics, machine learning, time series, deep learning, and computer vision.</p></article>
+      </div>
+    </div>
+  </div>
+</div></section>
 <section id="assistant"><div class="wrap"><h2>Ask About Al-Tayeb</h2><div class="assistantGrid"><div class="card"><h3>Profile Assistant</h3><p>This assistant is intentionally limited to Al-Tayeb's professional profile. Ask about experience, banking projects, machine learning, BI, education or contact information.</p><p><strong>Note:</strong> It does not answer unrelated questions.</p></div><div class="chat"><div class="chatHead"><span class="dot"></span><strong>Al-Tayeb Profile Assistant</strong></div><div class="messages" id="messages"></div><div class="quick"><button data-q="Tell me about his banking projects">Banking projects</button><button data-q="What are his machine learning skills?">ML skills</button><button data-q="What is his experience?">Experience</button><button data-q="What is his education?">Education</button></div><form class="inputRow" id="form"><input id="input" autocomplete="off" placeholder="Ask about Al-Tayeb..."><button>Send</button></form></div></div></div></section>
 </main>
 <footer><div class="wrap">© <span id="year"></span> Al-Tayeb Talal · Professional profile</div></footer>
