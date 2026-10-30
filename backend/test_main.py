@@ -5,6 +5,12 @@ import main
 client = TestClient(main.app)
 
 
+def setup_function():
+    """Reset process-local counters so one test cannot throttle another."""
+    main.request_times.clear()
+    main.daily_requests.clear()
+
+
 def test_health():
     response = client.get("/health")
     assert response.status_code == 200
