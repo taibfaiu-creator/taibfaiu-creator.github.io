@@ -26,14 +26,16 @@ ORIGINS = [
 app = FastAPI(title="Al-Tayeb Professional AI Assistant", version="0.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_methods=["POST", "GET"], allow_headers=["Content-Type"])
 
-MAX_REQUESTS_PER_15_MIN = 12
-MAX_DAILY_REQUESTS_PER_PROCESS = 150
+MAX_REQUESTS_PER_15_MIN = 8
+MAX_DAILY_REQUESTS_PER_PROCESS = 60
+MAX_SIMULTANEOUS_PROVIDER_REQUESTS = 2
 MAX_CHAT_BYTES = 16_384
 PUBLIC_DEPLOYMENT = os.getenv("PUBLIC_DEPLOYMENT", "false").lower() == "true"
 TURNSTILE_EXPECTED_HOSTNAME = os.getenv("TURNSTILE_EXPECTED_HOSTNAME", "taibfaiu-creator.github.io")
 request_times: dict[str, deque[float]] = defaultdict(deque)
 daily_requests: deque[float] = deque()
 rate_lock = asyncio.Lock()
+provider_slots = asyncio.Semaphore(MAX_SIMULTANEOUS_PROVIDER_REQUESTS)
 
 
 @app.middleware("http")
@@ -220,14 +222,23 @@ async def health() -> dict[str, str]:
 async def chat(payload: ChatRequest, request: Request) -> ChatResponse:
     await check_rate_limit(request)
     await verify_public_access(payload, request)
-    await check_daily_provider_budget()
+    # Bound simultaneous outbound LLM calls on the free instance.
+    # A queued request is rejected promptly rather than holding resources indefinitely.
     try:
-        result = await gemini_answer(payload.message, payload.history)
-        return ChatResponse(answer=result, source="gemini", fallback_used=False)
-    except ProviderUnavailable:
-        pass
+        await asyncio.wait_for(provider_slots.acquire(), timeout=0.05)
+    except asyncio.TimeoutError:
+        raise HTTPException(status_code=429, detail="Assistant is busy. Try again shortly.")
     try:
-        result = await groq_answer(payload.message, payload.history)
-        return ChatResponse(answer=result, source="groq", fallback_used=True)
-    except ProviderUnavailable:
-        return ChatResponse(answer=static_answer(payload.message), source="static", fallback_used=True)
+        await check_daily_provider_budget()
+        try:
+            result = await gemini_answer(payload.message, payload.history)
+            return ChatResponse(answer=result, source="gemini", fallback_used=False)
+        except ProviderUnavailable:
+            pass
+        try:
+            result = await groq_answer(payload.message, payload.history)
+            return ChatResponse(answer=result, source="groq", fallback_used=True)
+        except ProviderUnavailable:
+            return ChatResponse(answer=static_answer(payload.message), source="static", fallback_used=True)
+    finally:
+        provider_slots.release()
