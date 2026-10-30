@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#f5f8fc">
+<script>try{if(localStorage.getItem("portfolio-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
 <meta name="description" content="Al-Tayeb Talal — Data Scientist & Business Intelligence Specialist">
 <title>Al-Tayeb Talal | Data Scientist & BI Specialist</title>
 <style>
@@ -54,10 +55,43 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#f1f5fa}
 @media(max-width:820px){.hero{padding-top:58px}.snapshot{padding:22px}.assistantGrid{gap:16px}}
 @media(max-width:480px){section{padding:40px 0}.messages{height:350px;min-height:0}.msg{max-width:94%}.quick{gap:8px}.inputRow{padding:10px}.inputRow button{padding:0 14px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.project{transition:none}}
+
+/* Optional dark mode; light mode remains the default */
+.theme-toggle{display:inline-flex;align-items:center;gap:7px;flex-shrink:0;padding:9px 13px;border:1px solid #b7cce2;border-radius:999px;background:#fff;color:#17436e;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer}
+.theme-toggle:hover{background:#eaf2fb}
+.nav-actions{display:flex;align-items:center;gap:18px}
+[data-theme="dark"]{color-scheme:dark;--bg:#07111f;--panel:#112138;--panel2:#182c47;--text:#f1f6fd;--muted:#c0cde0;--line:#35506e;--blue:#86b9ff;--mint:#77e2ca}
+[data-theme="dark"] body{background:linear-gradient(180deg,#07111f,#102038 55%,#07111f);color:var(--text)}
+[data-theme="dark"] nav{background:rgba(7,17,31,.94);border-color:#30445e;box-shadow:none}
+[data-theme="dark"] .brand,[data-theme="dark"] .hero h1,[data-theme="dark"] h2,[data-theme="dark"] h3{color:#f2f7ff}
+[data-theme="dark"] .links,[data-theme="dark"] .lead{color:#c0cde0}
+[data-theme="dark"] .links a:hover{color:#a6d4ff}
+[data-theme="dark"] .pill{background:#113c3a;border-color:#2e8078;color:#a0f3dc}
+[data-theme="dark"] .snapshot,[data-theme="dark"] .card,[data-theme="dark"] .project,[data-theme="dark"] .chat{background:#112138;border-color:#35506e;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+[data-theme="dark"] .snapshot p,[data-theme="dark"] .card p,[data-theme="dark"] .project p,[data-theme="dark"] .item p{color:#c0cde0}
+[data-theme="dark"] .btn{background:#152941;color:#e3efff;border-color:#466789}
+[data-theme="dark"] .btn.primary{background:#377cdb;border-color:#377cdb;color:#fff}
+[data-theme="dark"] .btn.primary:hover{background:#2469c7}
+[data-theme="dark"] .tag{background:#182d47;color:#e0ecfc;border-color:#456080}
+[data-theme="dark"] .chatHead{background:#172b45;border-color:#35506e;color:#f0f6ff}
+[data-theme="dark"] .messages{background:#0c192c}
+[data-theme="dark"] .bot{background:#1c3554;color:#f0f6ff;border-color:#345472}
+[data-theme="dark"] .user{background:#306fce;color:#fff}
+[data-theme="dark"] .quick button{background:#172b45;color:#e4f1ff;border-color:#44658b}
+[data-theme="dark"] .quick button:hover{background:#254365}
+[data-theme="dark"] .inputRow{background:#112138;border-color:#35506e}
+[data-theme="dark"] .inputRow input{background:#0b1a2d;color:#f4f8ff;border-color:#54718f}
+[data-theme="dark"] .inputRow input::placeholder{color:#b6c6db}
+[data-theme="dark"] .inputRow button{background:#4d94ee;color:#07182a}
+[data-theme="dark"] .inputRow button:hover{background:#80b6fa}
+[data-theme="dark"] .theme-toggle{background:#1a3452;color:#f2f8ff;border-color:#537495}
+[data-theme="dark"] .theme-toggle:hover{background:#254a70}
+[data-theme="dark"] footer{background:#0a1728;color:#b9c9dd;border-color:#30445e}
+@media(max-width:820px){.nav-actions{gap:12px}.theme-toggle{padding:8px 11px}}
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><div class="brand">Al-Tayeb Talal</div><div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#assistant">Ask Assistant</a></div></div></nav>
+<nav><div class="wrap nav"><div class="brand">Al-Tayeb Talal</div><div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#assistant">Ask Assistant</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">🌙 Dark</button></div></div></nav>
 <header class="hero"><div class="wrap heroGrid"><div><span class="pill">Data Science · BI · AI/ML</span><h1>Al-Tayeb<br>Talal</h1><p class="lead">Data Scientist & Business Intelligence Specialist focused on banking analytics, machine learning, automation, dashboards, data quality and practical AI solutions.</p><div class="buttons"><a class="btn primary" href="#assistant">Ask about Al-Tayeb</a><a class="btn" href="mailto:taibfaiu@gmail.com">Email</a><a class="btn" href="https://github.com/taibfaiu-creator" target="_blank" rel="noopener">GitHub</a></div></div><aside class="snapshot"><div class="avatar">AT</div><h2>Professional Snapshot</h2><p><strong>Current role:</strong> Data Scientist, The National Bank (TNB)</p><p><strong>Location:</strong> Palestine</p><p><strong>Education:</strong> B.S. Electrical Engineering</p><p><strong>Focus:</strong> Banking analytics, ML, BI, automation and AI assistants</p></aside></div></header>
 <main>
 <section id="about"><div class="wrap"><h2>About</h2><div class="card"><p>Strategic Data Scientist and BI Specialist experienced in translating business requirements into data-driven solutions. His work spans financial dashboards, automated analytics workflows, customer analytics, banking chatbots, data quality, machine learning and customer segmentation.</p></div></div></section>
@@ -90,5 +124,22 @@ const en={summary:"Al-Tayeb Talal is a Data Scientist and BI Specialist with a b
 const ar={summary:"الطيب طلال Data Scientist وBI Specialist وخلفيته الأكاديمية في الهندسة الكهربائية. يركز على التحليلات المصرفية، Machine Learning، الأتمتة، لوحات BI، مساعدي الذكاء الاصطناعي، جودة البيانات وتحليلات العملاء.",role:"الطيب طلال يعمل Data Scientist في The National Bank (TNB) في فلسطين منذ مايو 2024. تشمل خبرته لوحات BI، أتمتة تدفقات البيانات، تحليلات العملاء، حلول الشات بوت البنكي وCustomer Segmentation.",banking:"من مشاريعه البنكية: Financial Dashboarding، Banking Customer-Service Chatbot، Customer Segmentation، Fraud Detection، Branch Profitability Prediction، Customer Profitability Prediction، Customer Suggestion Engine باستخدام LLMs، Voice Agent وHR Assistant.",ml:"تشمل مهاراته في ML: Python وNumPy وPandas وScikit-learn، التصنيف والانحدار، Feature Engineering، تقييم وتحسين النماذج، ARIMA/SARIMA، SHAP، TensorFlow وKeras وDeep Learning وComputer Vision.",bi:"لديه خبرة في Power BI وTableau وتصميم لوحات المعلومات المتقدمة وSAP. وفي TNB صمم تقارير مالية للإدارة تشمل Balance Sheet وP&L وCash Flow مع مقاييس MTD/YTD.",education:"يحمل الطيب درجة البكالوريوس في الهندسة الكهربائية من جامعة فلسطين التقنية – خضوري (PTUK) عام 2020، وأكمل Bootcamp في Data Science & Machine Learning لدى AXSOS Academy وتدريب Data Science & AI للقطاع المصرفي لدى معهد فلسطين للدراسات المصرفية.",electrical:"خلفيته الأكاديمية في الهندسة الكهربائية، ولديه مشروع Electrical Fault Detection باستخدام ML لاكتشاف الحالات غير الطبيعية في أنظمة الجهد المنخفض بالاعتماد على الجهد والتيار وPower Factor.",contact:"يمكن التواصل مع الطيب عبر البريد taibfaiu@gmail.com أو الهاتف +972597614002، وهو موجود في فلسطين.",projects:"تشمل مشاريعه Sales Prediction، SARIMA Forecasting، DNN Prediction، Chest X-ray Classification، Financial Dashboards، Banking Chatbot، Customer Segmentation، Fraud Detection، Profitability Prediction، LLM Suggestion Engine، Voice Agent، HR Assistant وElectrical Fault Detection."};
 function ans(q){let s=q.toLowerCase(),a=/[\u0600-\u06ff]/.test(q),k='';if(/contact|email|phone|reach|تواصل|ايميل|بريد|هاتف/.test(s))k='contact';else if(/education|degree|university|study|تعليم|دراسة|جامعة|شهادة|تخصص/.test(s))k='education';else if(/electrical|voltage|electric|كهرب|جهد/.test(s))k='electrical';else if(/power bi|tableau|dashboard|business intelligence|\bbi\b|داشبورد|ذكاء الأعمال/.test(s))k='bi';else if(/machine learning|\bml\b|model|deep learning|tensorflow|keras|scikit|sarima|arima|تعلم الالة|تعلم الآلة|نماذج/.test(s))k='ml';else if(/bank|tnb|banking|fraud|branch|customer|بنك|مصرف|احتيال|فرع|عميل/.test(s))k='banking';else if(/project|portfolio|مشروع/.test(s))k='projects';else if(/role|work|experience|job|position|عمل|خبرة|وظيفة|منصب/.test(s))k='role';else if(/who|about|summary|tell me|من هو|عرفني|نبذة|عنه/.test(s))k='summary';if(!k)return a?"أستطيع الإجابة فقط عن الملف المهني للطيب طلال: خبرته، مهاراته، مشاريعه، تعليمه ومعلومات التواصل.":"I can only answer questions about Al-Tayeb Talal’s professional profile: experience, skills, projects, education and contact information.";return (a?ar:en)[k]}
 function ask(q){if(!q.trim())return;add(q,'user');setTimeout(()=>add(ans(q),'bot'),120)}document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();let q=I.value;I.value='';ask(q)});document.querySelectorAll('.quick button').forEach(b=>b.onclick=()=>ask(b.dataset.q));
+
+// Theme selection: default light, persist an explicit visitor choice.
+const themeButton=document.getElementById('themeToggle');
+function syncThemeButton(){
+  const dark=document.documentElement.dataset.theme==='dark';
+  themeButton.textContent=dark?'☀️ Light':'🌙 Dark';
+  themeButton.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+  themeButton.setAttribute('aria-pressed',String(dark));
+  document.querySelector('meta[name="theme-color"]').content=dark?'#07111f':'#f5f8fc';
+}
+themeButton.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=next;
+  try{localStorage.setItem('portfolio-theme',next)}catch(e){}
+  syncThemeButton();
+});
+syncThemeButton();
 </script>
 </body></html>
