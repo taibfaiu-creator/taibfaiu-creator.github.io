@@ -131,9 +131,7 @@ def test_turnstile_verification_accepts_valid_domain(monkeypatch):
 
 def test_turnstile_rejects_invalid_expired_and_wrong_domain(monkeypatch):
     import httpx
-    import pytest
-
-    monkeypatch.setattr(main, "PUBLIC_DEPLOYMENT", True)
+\n    monkeypatch.setattr(main, "PUBLIC_DEPLOYMENT", True)
     monkeypatch.setenv("TURNSTILE_SECRET_KEY", "test-only-secret")
     original_client = httpx.AsyncClient
     provider_called = []
