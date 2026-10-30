@@ -160,6 +160,25 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 [data-theme="dark"] .project-card-foot{border-color:#3e5672;color:#afc5de}
 @media(max-width:1000px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.projects{grid-template-columns:1fr}.projects-head{align-items:start;flex-direction:column}.project-card{min-height:0}.project-filters button{padding:9px 12px}}
+
+/* Grouped professional skills */
+.skills-heading{max-width:750px;margin-bottom:23px}
+.skills-heading h2{margin:0 0 10px}
+.skills-intro{margin:0;color:var(--muted)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.skill-card{background:#f0f4f8;border:1px solid #c4d2df;box-shadow:0 10px 25px rgba(18,51,92,.05);border-radius:20px;padding:24px;min-width:0}
+.skill-card-wide{grid-column:1/-1}
+.skill-card-header{display:flex;gap:13px;align-items:center;margin-bottom:19px}
+.skill-icon{display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;border:1px solid #b3d2e6;border-radius:14px;background:#dcebf7;color:#155c9a;font-size:.78rem;font-weight:850;letter-spacing:.02em}
+.skill-card h3{font-size:1.12rem;line-height:1.35;margin:0 0 3px}
+.skill-card-header p{font-size:.81rem;color:#536981;margin:0;line-height:1.5}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tags span{display:inline-flex;align-items:center;padding:7px 11px;border-radius:8px;border:1px solid #cedbe7;background:#e6edf5;color:#284766;font-weight:620;font-size:.8rem;line-height:1.4}
+[data-theme="dark"] .skill-card{background:#13263d;border-color:#3d5976;box-shadow:0 10px 25px rgba(0,0,0,.12)}
+[data-theme="dark"] .skill-icon{background:#203e5b;border-color:#4b7193;color:#b1dcff}
+[data-theme="dark"] .skill-card-header p{color:#bbccdf}
+[data-theme="dark"] .skill-tags span{background:#20364f;border-color:#476480;color:#dfedfc}
+@media(max-width:700px){.skills-grid{grid-template-columns:1fr}.skill-card-wide{grid-column:auto}.skill-card{padding:19px}.skill-card-header{align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -216,7 +235,16 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 </div></header>
 <main>
 <section id="about"><div class="wrap"><h2>About</h2><div class="card"><p>Strategic Data Scientist and BI Specialist experienced in translating business requirements into data-driven solutions. His work spans financial dashboards, automated analytics workflows, customer analytics, banking chatbots, data quality, machine learning and customer segmentation.</p></div></div></section>
-<section id="skills"><div class="wrap"><h2>Core Skills</h2><div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span><span class="tag">Regression</span><span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span><span class="tag">ARIMA / SARIMA</span><span class="tag">SHAP</span><span class="tag">KNIME</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Computer Vision</span><span class="tag">ODI</span><span class="tag">Data Quality</span><span class="tag">JIRA</span><span class="tag">Git / GitHub</span></div></div></section>
+<section id="skills"><div class="wrap">
+  <div class="skills-heading"><span class="section-eyebrow">TECHNICAL TOOLKIT</span><h2>Skills &amp; Expertise</h2><p class="skills-intro">A practical mix of machine learning, AI development, banking analytics, and data engineering.</p></div>
+  <div class="skills-grid">
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">ML</span><div><h3>Data Science &amp; Machine Learning</h3><p>Modeling, validation and interpretable analytics</p></div></div><div class="skill-tags"><span>Python</span><span>NumPy</span><span>Pandas</span><span>Scikit-learn</span><span>Classification &amp; Regression</span><span>Feature Engineering</span><span>Model Evaluation</span><span>ARIMA / SARIMA</span><span>SHAP</span></div></article>
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">AI</span><div><h3>Artificial Intelligence</h3><p>Deep learning and conversational AI applications</p></div></div><div class="skill-tags"><span>TensorFlow</span><span>Keras</span><span>Deep Neural Networks</span><span>Computer Vision</span><span>Rasa</span><span>Conversational AI</span><span>LLM Applications</span></div></article>
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">BI</span><div><h3>Business Intelligence</h3><p>Decision support and visual analytics</p></div></div><div class="skill-tags"><span>Power BI</span><span>Tableau</span><span>Financial Dashboards</span><span>Management Reporting</span><span>Data Visualization</span></div></article>
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">DE</span><div><h3>Data Engineering &amp; Integration</h3><p>Data preparation, quality and service connectivity</p></div></div><div class="skill-tags"><span>SQL</span><span>Oracle</span><span>ODI</span><span>KNIME</span><span>Data Quality</span><span>ETL Workflows</span><span>REST APIs</span></div></article>
+    <article class="skill-card skill-card-wide"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">DEV</span><div><h3>Programming &amp; Delivery Tools</h3><p>Implementation, collaboration and version control</p></div></div><div class="skill-tags"><span>Python</span><span>Java</span><span>Git / GitHub</span><span>JIRA</span><span>VS Code</span><span>Google Colab</span></div></article>
+  </div>
+</div></section>
 <section id="projects"><div class="wrap">
   <div class="projects-head"><div><span class="section-eyebrow">SELECTED WORK</span><h2>Projects &amp; Applied Solutions</h2><p class="projects-intro">A selection of data science, banking analytics, and AI projects. Explore by focus area, or view the complete portfolio.</p></div><span class="project-count" id="projectCount" aria-live="polite"></span></div>
   <div class="project-filters" id="projectFilters" role="group" aria-label="Filter projects by topic">
