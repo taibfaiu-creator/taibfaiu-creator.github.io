@@ -88,11 +88,100 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 [data-theme="dark"] .theme-toggle:hover{background:#254a70}
 [data-theme="dark"] footer{background:#0a1728;color:#b9c9dd;border-color:#30445e}
 @media(max-width:820px){.nav-actions{gap:12px}.theme-toggle{padding:8px 11px}}
+
+/* Professional hero with custom vector AI graphic */
+.heroGrid{grid-template-columns:1.04fr .96fr;gap:42px}
+.hero-copy{min-width:0}
+.hero-name-accent{color:#1766ae}
+.hero-role{font-size:clamp(1.25rem,2.5vw,1.9rem);font-weight:750;color:#254d78;margin:0 0 12px;letter-spacing:-.025em}
+.hero .lead{max-width:600px}
+.hero .pill{font-size:.72rem;letter-spacing:.07em}
+.hero .buttons{margin-top:28px}
+.hero .btn{align-items:center;gap:8px}
+.hero-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:38px}
+.hero-facts>div{background:#e1e9f1;border:1px solid #c7d4e1;border-radius:13px;padding:13px 12px}
+.hero-facts strong,.hero-facts span{display:block}
+.hero-facts strong{color:#155b9b;font-size:1rem}
+.hero-facts span{color:#4b6076;font-size:.74rem;line-height:1.45;margin-top:2px}
+.hero-visual{border-radius:24px;border:1px solid #c2d0df;background:linear-gradient(145deg,#e2ebf4,#eef3f8 65%,#dfebf2);padding:20px;box-shadow:0 18px 40px rgba(24,60,99,.09);overflow:hidden}
+.visual-label{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:#39617f;display:flex;align-items:center;gap:9px}
+.visual-status{height:9px;width:9px;border-radius:50%;background:#13846f;box-shadow:0 0 0 4px #cbe7df}
+.ai-graphic{display:block;width:100%;height:auto;max-height:336px}
+.ai-center{fill:#173f69;stroke:#5ba5d4;stroke-width:2}
+.ai-center-text{fill:#fff;font:800 37px Inter,system-ui,sans-serif;letter-spacing:.02em}
+.ai-small-labels{fill:#315b80;font:700 11px Inter,system-ui,sans-serif;letter-spacing:.1em}
+.visual-foot{border-top:1px solid #c5d4e2;padding-top:15px;display:grid;gap:12px}
+.visual-foot span,.visual-foot strong{display:block}
+.visual-foot span{color:#587089;font-size:.65rem;font-weight:800;letter-spacing:.1em}
+.visual-foot strong{color:#203e5c;font-size:.87rem;line-height:1.5}
+[data-theme="dark"] .hero-name-accent{color:#85baff}
+[data-theme="dark"] .hero-role{color:#b3d5ff}
+[data-theme="dark"] .hero-facts>div{background:#182e49;border-color:#3b5673}
+[data-theme="dark"] .hero-facts strong{color:#9ac9ff}
+[data-theme="dark"] .hero-facts span{color:#c0d0e3}
+[data-theme="dark"] .hero-visual{background:linear-gradient(145deg,#11243b,#1a314c 65%,#10253b);border-color:#3e5c7b;box-shadow:0 18px 40px rgba(0,0,0,.2)}
+[data-theme="dark"] .visual-label{color:#b1d3f4}
+[data-theme="dark"] .visual-status{box-shadow:0 0 0 4px #1e554c}
+[data-theme="dark"] .ai-small-labels{fill:#acd0f0}
+[data-theme="dark"] .visual-foot{border-color:#3d5774}
+[data-theme="dark"] .visual-foot span{color:#abc1d9}
+[data-theme="dark"] .visual-foot strong{color:#f0f6ff}
+@media(max-width:820px){.heroGrid{grid-template-columns:1fr;gap:28px}.hero-visual{max-width:600px;width:100%;margin:auto}.hero-facts{margin-top:26px}}
+@media(max-width:480px){.hero-facts{gap:7px}.hero-facts>div{padding:10px 8px}.hero-facts span{font-size:.66rem}.hero-visual{padding:15px}.hero .pill{letter-spacing:.03em;font-size:.66rem}}
 </style>
 </head>
 <body>
 <nav><div class="wrap nav"><div class="brand">Al-Tayeb Talal</div><div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#assistant">Ask Assistant</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">🌙 Dark</button></div></div></nav>
-<header class="hero"><div class="wrap heroGrid"><div><span class="pill">Data Science · BI · AI/ML</span><h1>Al-Tayeb<br>Talal</h1><p class="lead">Data Scientist & Business Intelligence Specialist focused on banking analytics, machine learning, automation, dashboards, data quality and practical AI solutions.</p><div class="buttons"><a class="btn primary" href="#assistant">Ask about Al-Tayeb</a><a class="btn" href="mailto:taibfaiu@gmail.com">Email</a><a class="btn" href="https://github.com/taibfaiu-creator" target="_blank" rel="noopener">GitHub</a></div></div><aside class="snapshot"><div class="avatar">AT</div><h2>Professional Snapshot</h2><p><strong>Current role:</strong> Data Scientist, The National Bank (TNB)</p><p><strong>Location:</strong> Palestine</p><p><strong>Professional identity:</strong> Data Scientist &amp; Artificial Intelligence Specialist</p><p><strong>Focus:</strong> Banking analytics, ML, BI, automation and AI assistants</p></aside></div></header>
+<header class="hero"><div class="wrap heroGrid">
+<div class="hero-copy">
+  <span class="pill">DATA SCIENCE · ARTIFICIAL INTELLIGENCE · BANKING</span>
+  <h1>Al-Tayeb<br><span class="hero-name-accent">Talal</span></h1>
+  <p class="hero-role">Data Scientist <span aria-hidden="true">&amp;</span> AI Specialist</p>
+  <p class="lead">Building intelligent solutions through machine learning, banking analytics, and AI-powered applications.</p>
+  <div class="buttons">
+    <a class="btn primary" href="#projects">Explore Projects <span aria-hidden="true">↗</span></a>
+    <a class="btn" href="#assistant">Ask My AI Assistant</a>
+    <a class="btn" href="mailto:taibfaiu@gmail.com">Contact Me</a>
+  </div>
+  <div class="hero-facts" aria-label="Areas of expertise">
+    <div><strong>AI / ML</strong><span>Intelligent Systems</span></div>
+    <div><strong>Banking</strong><span>Domain Expertise</span></div>
+    <div><strong>BI</strong><span>Data Insights</span></div>
+  </div>
+</div>
+<aside class="hero-visual" aria-label="Professional profile and abstract artificial intelligence graphic">
+  <div class="visual-label"><span class="visual-status" aria-hidden="true"></span> DATA-DRIVEN THINKING</div>
+  <svg class="ai-graphic" viewBox="0 0 440 326" role="img" aria-labelledby="aiVisualTitle aiVisualDesc" xmlns="http://www.w3.org/2000/svg">
+    <title id="aiVisualTitle">Abstract data science and artificial intelligence network</title>
+    <desc id="aiVisualDesc">Connected data points around a central AI symbol, representing machine learning, analytical systems, and banking information.</desc>
+    <defs>
+      <linearGradient id="aiLines" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1C6BC1"/><stop offset="1" stop-color="#10947D"/></linearGradient>
+      <radialGradient id="aiGlow"><stop stop-color="#2A8FCA" stop-opacity=".22"/><stop offset="1" stop-color="#2A8FCA" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="220" cy="160" r="142" fill="url(#aiGlow)"/>
+    <g fill="none" stroke="url(#aiLines)" stroke-width="1.8" opacity=".67">
+      <path d="M220 160L96 72 57 161 129 269 220 160 323 73 382 165 313 267 220 160M96 72L323 73M57 161L382 165M129 269L313 267"/>
+      <path d="M96 72L129 269M323 73L313 267"/>
+    </g>
+    <g fill="#1A74BC">
+      <circle cx="96" cy="72" r="7"/><circle cx="57" cy="161" r="6"/><circle cx="129" cy="269" r="7"/>
+    </g>
+    <g fill="#128D7C"><circle cx="323" cy="73" r="7"/><circle cx="382" cy="165" r="6"/><circle cx="313" cy="267" r="7"/></g>
+    <g fill="none" stroke="url(#aiLines)" stroke-width="2">
+      <circle cx="220" cy="160" r="71"/><circle cx="220" cy="160" r="58" stroke-dasharray="5 9" opacity=".5"/>
+    </g>
+    <circle class="ai-center" cx="220" cy="160" r="49"/>
+    <text x="220" y="173" text-anchor="middle" class="ai-center-text">AI</text>
+    <g class="ai-small-labels" text-anchor="middle">
+      <text x="96" y="51">DATA</text><text x="342" y="55">ML</text><text x="385" y="191">BI</text><text x="115" y="300">INSIGHTS</text>
+    </g>
+  </svg>
+  <div class="visual-foot">
+    <div><span>PROFESSIONAL IDENTITY</span><strong>Data Scientist &amp; Artificial Intelligence Specialist</strong></div>
+    <div><span>CURRENT ROLE</span><strong>The National Bank (TNB) · Palestine</strong></div>
+  </div>
+</aside>
+</div></header>
 <main>
 <section id="about"><div class="wrap"><h2>About</h2><div class="card"><p>Strategic Data Scientist and BI Specialist experienced in translating business requirements into data-driven solutions. His work spans financial dashboards, automated analytics workflows, customer analytics, banking chatbots, data quality, machine learning and customer segmentation.</p></div></div></section>
 <section id="skills"><div class="wrap"><h2>Core Skills</h2><div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span><span class="tag">Regression</span><span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span><span class="tag">ARIMA / SARIMA</span><span class="tag">SHAP</span><span class="tag">KNIME</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Computer Vision</span><span class="tag">ODI</span><span class="tag">Data Quality</span><span class="tag">JIRA</span><span class="tag">Git / GitHub</span></div></div></section>
