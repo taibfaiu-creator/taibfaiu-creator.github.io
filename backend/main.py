@@ -74,8 +74,12 @@ class ProviderUnavailable(Exception):
     pass
 
 
-def system_prompt() -> str:
+def system_prompt(message: str) -> str:
+    language = "Arabic" if any("\u0600" <= ch <= "\u06ff" for ch in message) else "English"
     return (
+        f"The latest user question is in {language}. Answer entirely in {language}. "
+        "Do not switch languages because of older conversation history. "
+        "Use plain text only, without Markdown symbols such as **, # or backticks. "
         "You are Al-Tayeb Talal's professional profile assistant. "
         "Reply in the same language as the user's most recent message (Arabic or English). "
         "Answer ONLY questions about his professional profile, skills, education, "
@@ -125,7 +129,7 @@ async def gemini_answer(message: str, history: list[HistoryMessage]) -> str:
     ]
     contents.append({"role": "user", "parts": [{"text": message}]})
     payload = {
-        "systemInstruction": {"parts": [{"text": system_prompt()}]},
+        "systemInstruction": {"parts": [{"text": system_prompt(message)}]},
         "contents": contents,
         "generationConfig": {"temperature": 0.2, "maxOutputTokens": 500},
     }
@@ -151,7 +155,7 @@ async def groq_answer(message: str, history: list[HistoryMessage]) -> str:
     model = os.getenv("GROQ_MODEL", "").strip()
     if not (api_key and model):
         raise ProviderUnavailable("Groq is not configured")
-    messages = [{"role": "system", "content": system_prompt()}]
+    messages = [{"role": "system", "content": system_prompt(message)}]
     messages.extend({"role": h.role, "content": h.content} for h in history)
     messages.append({"role": "user", "content": message})
     try:
