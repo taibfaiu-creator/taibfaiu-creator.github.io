@@ -13,6 +13,9 @@ import httpx
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).with_name(".env"))
 
 KNOWLEDGE = json.loads((Path(__file__).parent / "knowledge.json").read_text(encoding="utf-8"))
 ORIGINS = [
