@@ -75,3 +75,32 @@ def test_public_mode_requires_turnstile_token(monkeypatch):
     monkeypatch.setenv("TURNSTILE_SECRET_KEY", "fake-test-secret")
     result = client.post("/api/chat", json={"message": "Hello"})
     assert result.status_code == 403
+
+
+def test_daily_provider_budget_blocks_after_limit(monkeypatch):
+    import asyncio
+    from collections import deque
+    from fastapi import HTTPException
+
+    monkeypatch.setattr(main, "daily_requests", deque())
+
+    async def use_budget():
+        for _ in range(main.MAX_DAILY_REQUESTS_PER_PROCESS):
+            await main.check_daily_provider_budget()
+        try:
+            await main.check_daily_provider_budget()
+        except HTTPException as exc:
+            assert exc.status_code == 429
+        else:
+            raise AssertionError("Daily limit did not reject excess request")
+
+    asyncio.run(use_budget())
+
+
+def test_busy_provider_does_not_call_model(monkeypatch):
+    import asyncio
+
+    monkeypatch.setattr(main, "provider_slots", asyncio.Semaphore(0))
+    response = client.post("/api/chat", json={"message": "Tell me about his work"})
+    assert response.status_code == 429
+    assert "busy" in response.json()["detail"].lower()
