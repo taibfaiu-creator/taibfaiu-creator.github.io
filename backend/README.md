@@ -1,6 +1,6 @@
 # Portfolio AI Assistant Backend
 
-Python FastAPI backend for the public professional portfolio. The website remains on GitHub Pages. This backend is **not deployed** yet.
+Python FastAPI backend for the public professional portfolio. The website remains on GitHub Pages. The backend is deployed on Render. The GitHub Pages frontend stays in an unmerged pull request.
 
 ## Providers and free-tier policy
 
@@ -41,10 +41,10 @@ Health check: `GET /health`. Chat: `POST /api/chat` with JSON `{"message":"What 
 - Deploy only after reviewing quota limits and configuring the four provider variables as *secrets* on the host.
 - Do not expose the keys or host the Python backend directly on GitHub Pages.
 - Configure HTTPS, trusted proxy headers, bounded request sizes, public-facing abuse protection, and deployment-level budget limits.
-- Current in-process rate limits are a minimal local safety net, **not** a sufficient distributed/global rate limit for production. Add an edge rate limiter before going public.
+- The backend currently allows **8 requests per client IP / 15 minutes**, **60 provider attempts per rolling 24 hours per Python process**, and **2 simultaneous provider requests**. Excess requests return HTTP 429. These are conservative process-local safeguards, **not** a reliable account-wide quota: counters reset on restart and are not shared across instances. Monitor provider dashboards and add an edge/shared rate limiter before public launch.
 - The knowledge file is intentionally public-only. Review each fact before deployment.
 - Model output is not independently fact-verified. Evaluate unsupported claims and prompt injection before launch.
-- No browser frontend has been connected yet.
+- The branch frontend points to the deployed Render backend, but protected public access is still disabled pending end-to-end verification.
 
 Run tests: `pytest -q`.
 
