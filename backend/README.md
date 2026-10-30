@@ -18,7 +18,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Set environment variables in your operating system or an untracked local .env loader. **Never commit keys.**
+Copy `.env.example` to `.env` within `backend/` and fill it locally, or configure these values in your operating system or hosting service. The app reads `.env` automatically. **Never commit keys.**
 
 ```text
 GEMINI_API_KEY=<secret>
