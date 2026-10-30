@@ -128,6 +128,38 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 [data-theme="dark"] .visual-foot strong{color:#f0f6ff}
 @media(max-width:820px){.heroGrid{grid-template-columns:1fr;gap:28px}.hero-visual{max-width:600px;width:100%;margin:auto}.hero-facts{margin-top:26px}}
 @media(max-width:480px){.hero-facts{gap:7px}.hero-facts>div{padding:10px 8px}.hero-facts span{font-size:.66rem}.hero-visual{padding:15px}.hero .pill{letter-spacing:.03em;font-size:.66rem}}
+
+/* Project discovery and accessible filter controls */
+.projects-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:21px}
+.section-eyebrow{display:block;font-size:.72rem;font-weight:800;letter-spacing:.14em;color:#1765a4;margin-bottom:10px}
+.projects-head h2{margin-bottom:9px}
+.projects-intro{color:var(--muted);max-width:690px;margin:0}
+.project-count{font-size:.8rem;font-weight:700;color:#49627b;white-space:nowrap;border:1px solid #c4d2e0;background:#e5ecf3;border-radius:100px;padding:8px 12px}
+.project-filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:21px}
+.project-filters button{padding:10px 15px;background:#e5ecf4;color:#244968;border:1px solid #c5d3e1;border-radius:100px;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.project-filters button:hover{background:#dbe7f2}
+.project-filters button.active{background:#155fa8;color:#fff;border-color:#155fa8}
+.projects{grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.project-card{min-height:247px;padding:23px;display:flex;flex-direction:column;gap:9px}
+.project-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:5px}
+.project-mark{display:grid;place-items:center;height:43px;width:43px;flex-shrink:0;background:#dcebf8;border:1px solid #b9d4e9;border-radius:13px;color:#165d9f;font-weight:900;font-size:.85rem}
+.project-category{font-size:.69rem;font-weight:750;color:#196c65;background:#dcefe9;padding:5px 9px;border-radius:100px;text-align:right}
+.project-card h3{font-size:1.05rem;line-height:1.4;margin:0}
+.project-card p{font-size:.9rem;line-height:1.65;margin:0;flex:1}
+.project-card-foot{font-size:.67rem;font-weight:800;letter-spacing:.1em;color:#58728b;border-top:1px solid #d0dce8;padding-top:12px;margin-top:5px}
+.projects-footer{display:flex;justify-content:center;margin-top:25px}
+.project-more{cursor:pointer;font:inherit}
+.project-more[hidden]{display:none}
+[data-theme="dark"] .section-eyebrow{color:#98c8ff}
+[data-theme="dark"] .project-count{color:#c4d5e8;background:#182e48;border-color:#46617e}
+[data-theme="dark"] .project-filters button{background:#192e48;color:#d5e6fa;border-color:#425f7d}
+[data-theme="dark"] .project-filters button:hover{background:#244261}
+[data-theme="dark"] .project-filters button.active{background:#377cdb;color:#fff;border-color:#377cdb}
+[data-theme="dark"] .project-mark{background:#214163;border-color:#426c94;color:#b2d7ff}
+[data-theme="dark"] .project-category{background:#174b46;color:#a6eedc}
+[data-theme="dark"] .project-card-foot{border-color:#3e5672;color:#afc5de}
+@media(max-width:1000px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.projects{grid-template-columns:1fr}.projects-head{align-items:start;flex-direction:column}.project-card{min-height:0}.project-filters button{padding:9px 12px}}
 </style>
 </head>
 <body>
@@ -185,7 +217,17 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 <main>
 <section id="about"><div class="wrap"><h2>About</h2><div class="card"><p>Strategic Data Scientist and BI Specialist experienced in translating business requirements into data-driven solutions. His work spans financial dashboards, automated analytics workflows, customer analytics, banking chatbots, data quality, machine learning and customer segmentation.</p></div></div></section>
 <section id="skills"><div class="wrap"><h2>Core Skills</h2><div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span><span class="tag">Regression</span><span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span><span class="tag">ARIMA / SARIMA</span><span class="tag">SHAP</span><span class="tag">KNIME</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Computer Vision</span><span class="tag">ODI</span><span class="tag">Data Quality</span><span class="tag">JIRA</span><span class="tag">Git / GitHub</span></div></div></section>
-<section id="projects"><div class="wrap"><h2>Selected Projects</h2><div class="projects" id="projectsList"></div></div></section>
+<section id="projects"><div class="wrap">
+  <div class="projects-head"><div><span class="section-eyebrow">SELECTED WORK</span><h2>Projects &amp; Applied Solutions</h2><p class="projects-intro">A selection of data science, banking analytics, and AI projects. Explore by focus area, or view the complete portfolio.</p></div><span class="project-count" id="projectCount" aria-live="polite"></span></div>
+  <div class="project-filters" id="projectFilters" role="group" aria-label="Filter projects by topic">
+    <button type="button" class="active" data-filter="all" aria-pressed="true">All projects</button>
+    <button type="button" data-filter="banking" aria-pressed="false">Banking &amp; AI</button>
+    <button type="button" data-filter="ml" aria-pressed="false">Machine Learning</button>
+    <button type="button" data-filter="bi" aria-pressed="false">Business Intelligence</button>
+  </div>
+  <div class="projects" id="projectsList"></div>
+  <div class="projects-footer"><button type="button" id="showProjects" class="btn project-more" aria-expanded="false">View all projects ↓</button></div>
+</div></section>
 <section id="experience"><div class="wrap"><h2>Experience & Education</h2><div class="timeline"><div class="item"><h3>Data Scientist · The National Bank (TNB)</h3><p>May 2024 – Present · Financial BI dashboards, automated Python/KNIME workflows, predictive customer analytics, banking chatbot solutions, integrations and customer segmentation.</p></div><div class="item"><h3>Data Science & Artificial Intelligence for the Banking Sector</h3><p>Palestine Banking Institute · 2024–2025 · Banking-focused training in customer analytics, risk/credit concepts, operational intelligence and governance.</p></div><div class="item"><h3>Data Science & Machine Learning Bootcamp</h3><p>AXSOS Academy · 2023–2024 · Intensive training in data science, machine learning, time series, deep learning and computer vision.</p></div><div class="item"><h3>B.S. Electrical Engineering</h3><p>Palestine Technical University of Kadoorie (PTUK) · 2020</p></div></div></div></section>
 <section id="assistant"><div class="wrap"><h2>Ask About Al-Tayeb</h2><div class="assistantGrid"><div class="card"><h3>Profile Assistant</h3><p>This assistant is intentionally limited to Al-Tayeb's professional profile. Ask about experience, banking projects, machine learning, BI, education or contact information.</p><p><strong>Note:</strong> It does not answer unrelated questions.</p></div><div class="chat"><div class="chatHead"><span class="dot"></span><strong>Al-Tayeb Profile Assistant</strong></div><div class="messages" id="messages"></div><div class="quick"><button data-q="Tell me about his banking projects">Banking projects</button><button data-q="What are his machine learning skills?">ML skills</button><button data-q="What is his experience?">Experience</button><button data-q="What is his education?">Education</button></div><form class="inputRow" id="form"><input id="input" autocomplete="off" placeholder="Ask about Al-Tayeb..."><button>Send</button></form></div></div></div></section>
 </main>
@@ -207,7 +249,54 @@ const projects=[
 ["HR Assistant","AI assistant concept for answering HR-related questions and simplifying access to internal HR information and processes."],
 ["Electrical Fault Detection Using ML","ML classification concept for identifying abnormal low-voltage conditions using measurements such as voltage, current and power factor."]
 ];
-document.getElementById('projectsList').innerHTML=projects.map(p=>`<article class="project"><h3>${p[0]}</h3><p>${p[1]}</p></article>`).join('');document.getElementById('year').textContent=new Date().getFullYear();
+
+const projectCatalog=[
+  {name:"Banking Customer-Service Chatbot",type:"banking",featured:true,mark:"AI"},
+  {name:"Customer Segmentation",type:"banking",featured:true,mark:"ML"},
+  {name:"Financial Dashboarding for TNB Bank",type:"bi",featured:true,mark:"BI"},
+  {name:"Fraud Detection Using Machine Learning",type:"banking",featured:true,mark:"ML"},
+  {name:"Customer Profitability Prediction",type:"banking",featured:true,mark:"DS"},
+  {name:"Chicago Crime Data — SARIMA Forecasting",type:"ml",featured:true,mark:"TS"},
+  {name:"Branch Profitability Prediction",type:"banking",mark:"DS"},
+  {name:"Customer Suggestion Engine Using LLMs",type:"banking",mark:"AI"},
+  {name:"Voice Agent",type:"banking",mark:"AI"},
+  {name:"HR Assistant",type:"banking",mark:"AI"},
+  {name:"Big Mart Sales Prediction",type:"ml",mark:"ML"},
+  {name:"Cirrhosis Prediction Using DNN",type:"ml",mark:"DL"},
+  {name:"Chest X-ray Classification",type:"ml",mark:"CV"},
+  {name:"Electrical Fault Detection Using ML",type:"ml",mark:"ML"}
+];
+const descriptionByName=new Map(projects.map(p=>[p[0],p[1]]));
+const projectTypeLabels={banking:"Banking & AI",ml:"Machine Learning",bi:"Business Intelligence"};
+const projectList=document.getElementById('projectsList'),projectCount=document.getElementById('projectCount'),showProjects=document.getElementById('showProjects');
+let projectFilter='all',allProjectsVisible=false;
+function renderProjects(){
+  const visible=projectCatalog.filter(p=>projectFilter!=='all'?p.type===projectFilter:(allProjectsVisible||p.featured));
+  projectList.replaceChildren();
+  visible.forEach((project,index)=>{
+    const article=document.createElement('article');article.className='project project-card';
+    const top=document.createElement('div');top.className='project-card-top';
+    const mark=document.createElement('span');mark.className='project-mark';mark.textContent=project.mark;
+    const label=document.createElement('span');label.className='project-category';label.textContent=projectTypeLabels[project.type];
+    top.append(mark,label);
+    const heading=document.createElement('h3');heading.textContent=project.name;
+    const description=document.createElement('p');description.textContent=descriptionByName.get(project.name)||'Project details coming soon.';
+    const footer=document.createElement('div');footer.className='project-card-foot';
+    footer.textContent='PROJECT '+String(projectCatalog.indexOf(project)+1).padStart(2,'0');
+    article.append(top,heading,description,footer);projectList.append(article);
+  });
+  projectCount.textContent=visible.length+' of '+projectCatalog.length+' projects';
+  showProjects.hidden=projectFilter!=='all';
+  showProjects.textContent=allProjectsVisible?'Show featured projects ↑':'View all '+projectCatalog.length+' projects ↓';
+  showProjects.setAttribute('aria-expanded',String(allProjectsVisible));
+}
+document.querySelectorAll('#projectFilters button').forEach(button=>button.addEventListener('click',()=>{
+  projectFilter=button.dataset.filter;
+  document.querySelectorAll('#projectFilters button').forEach(b=>{const selected=b===button;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});
+  renderProjects();
+}));
+showProjects.addEventListener('click',()=>{allProjectsVisible=!allProjectsVisible;renderProjects()});
+renderProjects();document.getElementById('year').textContent=new Date().getFullYear();
 const M=document.getElementById('messages'),I=document.getElementById('input');function add(t,c){const d=document.createElement('div');d.className='msg '+c;d.textContent=t;M.appendChild(d);M.scrollTop=M.scrollHeight}add("Hi! I’m Al-Tayeb’s profile assistant. I can answer questions about his professional experience, skills, projects and education.",'bot');
 const en={summary:"Al-Tayeb Talal is a Data Scientist and BI Specialist with a background in Electrical Engineering. He focuses on banking analytics, machine learning, automation, BI dashboards, AI assistants, data quality and customer analytics.",role:"Al-Tayeb Talal works as a Data Scientist at The National Bank (TNB) in Palestine since May 2024. His work includes BI dashboards, automated data workflows, customer analytics, banking chatbot solutions and customer segmentation.",banking:"His banking projects include Financial Dashboarding for TNB Bank, a Banking Customer-Service Chatbot, Customer Segmentation, Fraud Detection, Branch Profitability Prediction, Customer Profitability Prediction, an LLM-based Customer Suggestion Engine, a Voice Agent and an HR Assistant.",ml:"His ML toolkit includes Python, NumPy, Pandas, Scikit-learn, classification, regression, feature engineering, model evaluation and optimization, ARIMA/SARIMA, SHAP, TensorFlow, Keras, deep neural networks and computer vision.",bi:"His BI experience includes Power BI, Tableau, advanced dashboard design and SAP-related data integration and analytics. At TNB, he has designed financial dashboards for management reporting including Balance Sheet, P&L and Cash Flow with MTD/YTD measures.",education:"Al-Tayeb holds a B.S. in Electrical Engineering from Palestine Technical University of Kadoorie (PTUK), completed in 2020. He also completed a Data Science & Machine Learning Bootcamp at AXSOS Academy and banking-focused Data Science & AI training at the Palestine Banking Institute.",electrical:"His background is in Electrical Engineering, and his applied ML portfolio includes Electrical Fault Detection for low-voltage systems using measurements such as voltage, current and power factor.",contact:"You can contact Al-Tayeb at taibfaiu@gmail.com or by phone at +972597614002. He is based in Palestine.",projects:"Selected projects include sales prediction, SARIMA forecasting, DNN prediction, chest X-ray classification, banking dashboards, banking chatbot, customer segmentation, fraud detection, profitability prediction, LLM suggestion engine, voice agent, HR assistant and electrical fault detection."};
 const ar={summary:"الطيب طلال Data Scientist وBI Specialist وخلفيته الأكاديمية في الهندسة الكهربائية. يركز على التحليلات المصرفية، Machine Learning، الأتمتة، لوحات BI، مساعدي الذكاء الاصطناعي، جودة البيانات وتحليلات العملاء.",role:"الطيب طلال يعمل Data Scientist في The National Bank (TNB) في فلسطين منذ مايو 2024. تشمل خبرته لوحات BI، أتمتة تدفقات البيانات، تحليلات العملاء، حلول الشات بوت البنكي وCustomer Segmentation.",banking:"من مشاريعه البنكية: Financial Dashboarding، Banking Customer-Service Chatbot، Customer Segmentation، Fraud Detection، Branch Profitability Prediction، Customer Profitability Prediction، Customer Suggestion Engine باستخدام LLMs، Voice Agent وHR Assistant.",ml:"تشمل مهاراته في ML: Python وNumPy وPandas وScikit-learn، التصنيف والانحدار، Feature Engineering، تقييم وتحسين النماذج، ARIMA/SARIMA، SHAP، TensorFlow وKeras وDeep Learning وComputer Vision.",bi:"لديه خبرة في Power BI وTableau وتصميم لوحات المعلومات المتقدمة وSAP. وفي TNB صمم تقارير مالية للإدارة تشمل Balance Sheet وP&L وCash Flow مع مقاييس MTD/YTD.",education:"يحمل الطيب درجة البكالوريوس في الهندسة الكهربائية من جامعة فلسطين التقنية – خضوري (PTUK) عام 2020، وأكمل Bootcamp في Data Science & Machine Learning لدى AXSOS Academy وتدريب Data Science & AI للقطاع المصرفي لدى معهد فلسطين للدراسات المصرفية.",electrical:"خلفيته الأكاديمية في الهندسة الكهربائية، ولديه مشروع Electrical Fault Detection باستخدام ML لاكتشاف الحالات غير الطبيعية في أنظمة الجهد المنخفض بالاعتماد على الجهد والتيار وPower Factor.",contact:"يمكن التواصل مع الطيب عبر البريد taibfaiu@gmail.com أو الهاتف +972597614002، وهو موجود في فلسطين.",projects:"تشمل مشاريعه Sales Prediction، SARIMA Forecasting، DNN Prediction، Chest X-ray Classification، Financial Dashboards، Banking Chatbot، Customer Segmentation، Fraud Detection، Profitability Prediction، LLM Suggestion Engine، Voice Agent، HR Assistant وElectrical Fault Detection."};
