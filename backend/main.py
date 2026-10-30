@@ -27,8 +27,28 @@ app = FastAPI(title="Al-Tayeb Professional AI Assistant", version="0.1.0")
 app.add_middleware(CORSMiddleware, allow_origins=ORIGINS, allow_methods=["POST", "GET"], allow_headers=["Content-Type"])
 
 MAX_REQUESTS_PER_15_MIN = 12
+MAX_DAILY_REQUESTS_PER_PROCESS = 150
+MAX_CHAT_BYTES = 16_384
+PUBLIC_DEPLOYMENT = os.getenv("PUBLIC_DEPLOYMENT", "false").lower() == "true"
+TURNSTILE_EXPECTED_HOSTNAME = os.getenv("TURNSTILE_EXPECTED_HOSTNAME", "taibfaiu-creator.github.io")
 request_times: dict[str, deque[float]] = defaultdict(deque)
+daily_requests: deque[float] = deque()
 rate_lock = asyncio.Lock()
+
+
+@app.middleware("http")
+async def request_size_guard(request: Request, call_next):
+    if request.url.path == "/api/chat":
+        length = request.headers.get("content-length")
+        if length is not None:
+            try:
+                if int(length) > MAX_CHAT_BYTES:
+                    from starlette.responses import JSONResponse
+                    return JSONResponse({"detail": "Request body too large"}, status_code=413)
+            except ValueError:
+                from starlette.responses import JSONResponse
+                return JSONResponse({"detail": "Invalid Content-Length"}, status_code=400)
+    return await call_next(request)
 
 
 class HistoryMessage(BaseModel):
@@ -39,6 +59,7 @@ class HistoryMessage(BaseModel):
 class ChatRequest(BaseModel):
     message: str = Field(min_length=1, max_length=600)
     history: list[HistoryMessage] = Field(default_factory=list, max_length=6)
+    turnstile_token: str | None = Field(default=None, max_length=2048)
 
 
 class ChatResponse(BaseModel):
@@ -77,6 +98,17 @@ async def check_rate_limit(request: Request) -> None:
         if len(recent) >= MAX_REQUESTS_PER_15_MIN:
             raise HTTPException(status_code=429, detail="Too many requests. Try again later.")
         recent.append(now)
+
+
+async def check_daily_provider_budget() -> None:
+    # Per-process circuit breaker; not a distributed billing guarantee.
+    now = time.monotonic()
+    async with rate_lock:
+        while daily_requests and now - daily_requests[0] > 86400:
+            daily_requests.popleft()
+        if len(daily_requests) >= MAX_DAILY_REQUESTS_PER_PROCESS:
+            raise HTTPException(status_code=429, detail="Daily usage limit reached.")
+        daily_requests.append(now)
 
 
 async def gemini_answer(message: str, history: list[HistoryMessage]) -> str:
@@ -152,6 +184,33 @@ def static_answer(message: str) -> str:
     )
 
 
+async def verify_public_access(payload: ChatRequest, request: Request) -> None:
+    if not PUBLIC_DEPLOYMENT:
+        client_host = request.client.host if request.client else ""
+        if client_host not in {"127.0.0.1", "::1", "testclient"}:
+            raise HTTPException(status_code=403, detail="Public access is disabled.")
+        return
+
+    secret = os.getenv("TURNSTILE_SECRET_KEY", "").strip()
+    if not secret:
+        raise HTTPException(status_code=503, detail="Public verification is not configured.")
+    token = (payload.turnstile_token or "").strip()
+    if not token:
+        raise HTTPException(status_code=403, detail="Verification required.")
+    try:
+        async with httpx.AsyncClient(timeout=6) as client:
+            response = await client.post(
+                "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+                data={"secret": secret, "response": token},
+            )
+            response.raise_for_status()
+            data = response.json()
+    except (httpx.HTTPError, ValueError) as exc:
+        raise HTTPException(status_code=503, detail="Verification temporarily unavailable.") from exc
+    if not data.get("success") or data.get("hostname") != TURNSTILE_EXPECTED_HOSTNAME:
+        raise HTTPException(status_code=403, detail="Verification failed.")
+
+
 @app.get("/health")
 async def health() -> dict[str, str]:
     return {"status": "ok"}
@@ -160,6 +219,8 @@ async def health() -> dict[str, str]:
 @app.post("/api/chat", response_model=ChatResponse)
 async def chat(payload: ChatRequest, request: Request) -> ChatResponse:
     await check_rate_limit(request)
+    await verify_public_access(payload, request)
+    await check_daily_provider_budget()
     try:
         result = await gemini_answer(payload.message, payload.history)
         return ChatResponse(answer=result, source="gemini", fallback_used=False)
