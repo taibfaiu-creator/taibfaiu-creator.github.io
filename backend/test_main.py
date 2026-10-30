@@ -162,3 +162,12 @@ def test_turnstile_rejects_invalid_expired_and_wrong_domain(monkeypatch):
         response = client.post("/api/chat", json={"message": "Hello", "turnstile_token": "test-token"})
         assert response.status_code == 403
     assert not provider_called
+
+
+def test_system_prompt_uses_latest_question_language():
+    english = main.system_prompt("What is his experience?")
+    arabic = main.system_prompt("ما هي خبراته المهنية؟")
+    assert "Answer entirely in English" in english
+    assert "Answer entirely in Arabic" in arabic
+    assert "plain text only" in english
+    assert "Do not switch languages because of older conversation history" in arabic
