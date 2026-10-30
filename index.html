@@ -255,6 +255,19 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 @keyframes widget-enter{from{opacity:0;translate:0 12px;scale:.97}to{opacity:1;translate:0 0;scale:1}}
 @media(max-width:480px){.assistant-launcher{right:12px;bottom:12px;padding:7px 12px 7px 7px}.launcher-icon{width:39px;height:39px}.assistant-widget{right:8px;bottom:79px;width:calc(100vw - 16px);height:min(600px,calc(100dvh - 96px))}.assistant-widget .messages{min-height:0;height:auto}}
 @media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-launcher::before,.launcher-icon,.assistant-widget{animation:none}}
+
+/* Brief, attention-catching welcome; it plays once per page load. */
+.assistant-greeting{position:fixed;z-index:100;right:clamp(14px,3vw,36px);bottom:clamp(103px,9vw,118px);display:flex;align-items:center;gap:10px;max-width:calc(100vw - 30px);padding:12px 18px;border:1px solid #b5d9fb;border-radius:17px;background:#fff;color:#133d67;box-shadow:0 14px 34px rgba(13,70,124,.24);pointer-events:none;opacity:0;animation:greeting-hello 6s ease-in-out .6s both}
+.assistant-greeting::after{content:"";position:absolute;right:30px;bottom:-10px;width:18px;height:18px;background:#fff;border-right:1px solid #b5d9fb;border-bottom:1px solid #b5d9fb;transform:rotate(45deg)}
+.assistant-greeting span:last-child{display:flex;flex-direction:column;line-height:1.4}.assistant-greeting strong{font-size:.94rem}.assistant-greeting small{font-size:.8rem;color:#385d7e}
+.greeting-wave{font-size:1.55rem;animation:greeting-wave 1s ease-in-out .9s 3}
+.assistant-greeting.greeting-dismissed{display:none}
+@keyframes launcher-intro{0%{opacity:0;scale:.45;rotate:-16deg}55%{opacity:1;scale:1.16;rotate:7deg}75%{scale:.94;rotate:-3deg}100%{scale:1;rotate:0}}
+@keyframes greeting-hello{0%,5%{opacity:0;translate:0 18px;scale:.88}14%,76%{opacity:1;translate:0 0;scale:1}90%,100%{opacity:0;translate:0 -8px;scale:.98}}
+@keyframes greeting-wave{0%,100%{rotate:0}35%{rotate:22deg}70%{rotate:-10deg}}
+.assistant-launcher{animation:launcher-intro 1.05s cubic-bezier(.18,1.2,.32,1) both,launcher-bob 3.3s ease-in-out 1.1s infinite}
+@media(max-width:480px){.assistant-greeting{right:12px;bottom:87px;padding:10px 13px}}
+@media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-greeting,.greeting-wave{animation:none}.assistant-greeting{display:none}}
 </style>
 </head>
 <body>
@@ -360,7 +373,7 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
     </div>
   </div>
 </div></section>
-<button id="assistantLauncher" class="assistant-launcher" type="button" aria-controls="assistant" aria-expanded="false" aria-label="Open Al-Tayeb AI assistant"><span class="launcher-icon" aria-hidden="true">✦</span><span class="launcher-label"><strong>Ask Al-Tayeb AI</strong><small>اسأل مساعدي الذكي</small></span><span class="launcher-online" aria-hidden="true"></span></button><section id="assistant" class="assistant-widget" aria-label="Al-Tayeb profile assistant" hidden><div class="chat"><div class="chatHead"><span class="dot"></span><strong>Al-Tayeb Profile Assistant</strong><span id="assistantMode" class="assistant-mode" role="status">Profile FAQs</span><button id="assistantClose" class="assistant-close" type="button" aria-label="Close assistant">×</button></div><div class="messages" id="messages"></div><div id="turnstileArea" class="turnstile-area" hidden><div id="turnstileWidget"></div><p id="turnstileStatus" role="status">Loading visitor verification…</p></div><div class="quick"><button data-q="Tell me about his banking projects">Banking projects</button><button data-q="What are his machine learning skills?">ML skills</button><button data-q="What is his experience?">Experience</button><button data-q="What is his education?">Education</button></div><form class="inputRow" id="form"><input id="input" autocomplete="off" placeholder="Ask about Al-Tayeb..."><button>Send</button></form></div></section>
+<div id="assistantGreeting" class="assistant-greeting" aria-hidden="true"><span class="greeting-wave">👋</span><span><strong>مرحبًا بك!</strong><small>اسألني عن الطيب ومشاريعه</small></span></div><button id="assistantLauncher" class="assistant-launcher" type="button" aria-controls="assistant" aria-expanded="false" aria-label="Open Al-Tayeb AI assistant"><span class="launcher-icon" aria-hidden="true">✦</span><span class="launcher-label"><strong>Ask Al-Tayeb AI</strong><small>اسأل مساعدي الذكي</small></span><span class="launcher-online" aria-hidden="true"></span></button><section id="assistant" class="assistant-widget" aria-label="Al-Tayeb profile assistant" hidden><div class="chat"><div class="chatHead"><span class="dot"></span><strong>Al-Tayeb Profile Assistant</strong><span id="assistantMode" class="assistant-mode" role="status">Profile FAQs</span><button id="assistantClose" class="assistant-close" type="button" aria-label="Close assistant">×</button></div><div class="messages" id="messages"></div><div id="turnstileArea" class="turnstile-area" hidden><div id="turnstileWidget"></div><p id="turnstileStatus" role="status">Loading visitor verification…</p></div><div class="quick"><button data-q="Tell me about his banking projects">Banking projects</button><button data-q="What are his machine learning skills?">ML skills</button><button data-q="What is his experience?">Experience</button><button data-q="What is his education?">Education</button></div><form class="inputRow" id="form"><input id="input" autocomplete="off" placeholder="Ask about Al-Tayeb..."><button>Send</button></form></div></section>
 </main>
 <footer><div class="wrap">© <span id="year"></span> Al-Tayeb Talal · Professional profile</div></footer>
 <script>
@@ -479,6 +492,7 @@ const assistantPanel = document.getElementById('assistant');
 const closeAssistantButton = document.getElementById('assistantClose');
 let verificationLoaded = false;
 function openAssistant(){
+  document.getElementById('assistantGreeting').classList.add('greeting-dismissed');
   assistantPanel.hidden = false;
   launcher.setAttribute('aria-expanded','true');
   launcher.setAttribute('aria-label','Close Al-Tayeb AI assistant');
