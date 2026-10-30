@@ -5,8 +5,14 @@ import main
 client = TestClient(main.app)
 
 
-def setup_function():
-    """Reset process-local counters so one test cannot throttle another."""
+import pytest
+
+
+@pytest.fixture(autouse=True)
+def isolated_test_state(monkeypatch):
+    """Tests must not inherit local preview or production configuration."""
+    monkeypatch.setattr(main, "PUBLIC_DEPLOYMENT", False)
+    monkeypatch.setattr(main, "TURNSTILE_EXPECTED_HOSTNAME", "taibfaiu-creator.github.io")
     main.request_times.clear()
     main.daily_requests.clear()
 
