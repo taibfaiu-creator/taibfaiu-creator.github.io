@@ -1,23 +1,379 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#e9eef4">
+<script>try{if(localStorage.getItem("portfolio-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
 <meta name="description" content="Al-Tayeb Talal — Data Scientist & Business Intelligence Specialist">
 <title>Al-Tayeb Talal | Data Scientist & BI Specialist</title>
 <style>
 :root{--bg:#07111f;--panel:#0d1a2d;--panel2:#12223a;--text:#f4f7fb;--muted:#a9b8cc;--line:#233650;--blue:#6ba8ff;--mint:#73e0c1}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#07111f,#0a1526 55%,#07111f);color:var(--text);line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(1100px,92vw);margin:auto}nav{position:sticky;top:0;z-index:10;background:rgba(7,17,31,.86);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}.brand{font-weight:800}.links{display:flex;gap:18px;color:var(--muted);font-size:.92rem}.hero{padding:76px 0 54px}.heroGrid{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}.pill{display:inline-block;padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:var(--mint);font-size:.85rem}h1{font-size:clamp(2.7rem,7vw,5.6rem);line-height:.95;letter-spacing:-.05em;margin:18px 0}.lead{font-size:1.12rem;color:var(--muted);max-width:760px}.buttons{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}.btn{display:inline-flex;padding:11px 15px;border-radius:12px;border:1px solid var(--line);font-weight:700;background:var(--panel)}.btn.primary{background:linear-gradient(135deg,var(--blue),#7f75ff);border:none}.snapshot,.card,.project,.chat{background:rgba(13,26,45,.9);border:1px solid var(--line);border-radius:20px}.snapshot{padding:26px}.avatar{width:84px;height:84px;border-radius:24px;background:linear-gradient(135deg,var(--blue),var(--mint));color:#06111f;display:grid;place-items:center;font-size:1.8rem;font-weight:900}.snapshot p,.card p,.project p{color:var(--muted)}section{padding:50px 0}h2{font-size:2rem;margin:0 0 16px}.tags{display:flex;flex-wrap:wrap;gap:8px}.tag{padding:8px 10px;border:1px solid var(--line);border-radius:999px;color:#dce7f6;background:rgba(255,255,255,.02);font-size:.9rem}.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.project{padding:17px}.project h3{margin:0 0 7px;font-size:1rem}.timeline{display:grid;gap:13px}.item{border-left:3px solid var(--blue);padding-left:16px}.item h3{margin:0}.item p{margin:5px 0 0;color:var(--muted)}.assistantGrid{display:grid;grid-template-columns:.75fr 1.25fr;gap:20px;align-items:start}.card{padding:20px}.chat{overflow:hidden}.chatHead{padding:15px 17px;border-bottom:1px solid var(--line);display:flex;gap:9px;align-items:center}.dot{width:10px;height:10px;border-radius:50%;background:var(--mint)}.messages{height:390px;overflow:auto;padding:16px;display:flex;flex-direction:column;gap:10px}.msg{max-width:86%;padding:10px 12px;border-radius:14px;white-space:pre-wrap}.bot{align-self:flex-start;background:#152640}.user{align-self:flex-end;background:linear-gradient(135deg,#397fdc,#665fe2)}.quick{display:flex;flex-wrap:wrap;gap:7px;padding:0 14px 12px}.quick button{border:1px solid var(--line);background:transparent;color:var(--text);border-radius:999px;padding:7px 10px;cursor:pointer}.inputRow{display:flex;gap:8px;padding:13px;border-top:1px solid var(--line)}.inputRow input{flex:1;padding:12px;border-radius:10px;border:1px solid var(--line);background:#081424;color:var(--text)}.inputRow button{border:0;border-radius:10px;background:var(--blue);font-weight:800;padding:0 16px;cursor:pointer}footer{border-top:1px solid rgba(255,255,255,.07);padding:28px 0 40px;color:var(--muted);font-size:.9rem}@media(max-width:820px){.heroGrid,.assistantGrid{grid-template-columns:1fr}.projects{grid-template-columns:1fr}.links{display:none}.hero{padding-top:50px}}
+
+/* Readability-first light theme */
+:root{
+  color-scheme:light;
+  --bg:#e9eef4;--panel:#f1f4f8;--panel2:#e5ebf2;
+  --text:#172b45;--muted:#40546d;--line:#cfdae8;
+  --blue:#145db2;--mint:#087b6b;
+}
+body{background:linear-gradient(180deg,#e9eef4 0%,#e3eaf2 52%,#e9eef4 100%);color:var(--text);line-height:1.7}
+nav{background:rgba(239,243,248,.96);border-bottom:1px solid var(--line);box-shadow:0 3px 14px rgba(20,46,80,.05)}
+.brand{color:#102a4a;letter-spacing:-.02em}
+.links{color:#344b66}.links a:hover,.links a:focus-visible{color:var(--blue)}
+.hero{padding:86px 0 64px}.hero h1{color:#102b4f;line-height:1.03}
+.lead{color:#354e6b;line-height:1.8}
+.pill{background:#e8f6f2;border-color:#addbd1;color:#075e52;font-weight:700}
+.snapshot,.card,.project,.chat{background:var(--panel);border:1px solid #c7d3e0;border-radius:20px;box-shadow:0 10px 30px rgba(18,51,92,.07)}
+.snapshot{padding:30px}.snapshot p,.card p,.project p{color:var(--muted)}
+.avatar{background:linear-gradient(135deg,#1c61b7,#0f8f7a);color:#fff}
+section{padding:55px 0}h2{color:#142e50;letter-spacing:-.025em}
+h3{color:#1b3555}
+.btn{background:#eef3f8;color:#17436e;border:1px solid #b7cce2;transition:transform .18s,box-shadow .18s,background .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(17,70,125,.12)}
+.btn.primary{background:#165fab;color:#fff;border:1px solid #165fab}
+.btn.primary:hover{background:#104d90}
+.tag{color:#254769;background:#eff5fb;border-color:#cad9e9;font-weight:550}
+.project{padding:22px;transition:transform .2s,box-shadow .2s}
+.project:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(18,51,92,.11)}
+.item{border-left-color:#1b6fba}.item p{color:var(--muted)}
+.chatHead{background:#edf5fc;border-bottom-color:var(--line);color:#193c60}
+.dot{background:#07836d;box-shadow:0 0 0 4px #cceee5}
+.messages{background:#e9eff6;min-height:390px}
+.msg{position:relative;line-height:1.65;overflow-wrap:anywhere;text-align:start;unicode-bidi:plaintext;box-shadow:0 5px 16px rgba(24,66,110,.09);animation:bubble-appear .38s cubic-bezier(.22,1,.36,1) both;transition:transform .2s ease,box-shadow .2s ease}
+.msg:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(24,66,110,.15)}
+.msg::after{content:"";position:absolute;bottom:0;width:15px;height:16px;background:var(--bubble-color);pointer-events:none}
+.bot{--bubble-color:#e8f0f9;background:var(--bubble-color);color:#1b3551;border:1px solid #d5e2f0;border-bottom-left-radius:5px;transform-origin:bottom left}
+.bot::after{left:-10px;clip-path:polygon(100% 0,100% 100%,0 100%)}
+.user{--bubble-color:#1762b2;background:var(--bubble-color);color:#fff;border-bottom-right-radius:5px;transform-origin:bottom right}
+.user::after{right:-10px;clip-path:polygon(0 0,100% 100%,0 100%)}
+@keyframes bubble-appear{from{opacity:0;translate:0 12px;scale:.97}to{opacity:1;translate:0 0;scale:1}}
+.quick button{background:#edf2f8;color:#1b5487;border:1px solid #bad0e5;font-weight:600}
+.quick button:hover{background:#edf5fd;border-color:#6ca3d5}
+.inputRow{background:#eff3f8;border-top-color:var(--line)}
+.inputRow input{min-width:0;background:#e8eef5;color:#142c49;border:1px solid #aebfd3;font-size:1rem}
+.inputRow input::placeholder{color:#65788d}
+.inputRow button{background:#165fab;color:#fff;min-height:44px;padding:0 20px}
+.inputRow button:hover{background:#104d90}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #e39a28;outline-offset:3px}
+footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
+@media(max-width:820px){.hero{padding-top:58px}.snapshot{padding:22px}.assistantGrid{gap:16px}}
+@media(max-width:480px){section{padding:40px 0}.messages{height:350px;min-height:0}.msg{max-width:94%}.quick{gap:8px}.inputRow{padding:10px}.inputRow button{padding:0 14px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.project,.msg{transition:none}.msg{animation:none}.msg:hover{transform:none}}
+
+/* Optional dark mode; light mode remains the default */
+.theme-toggle{display:inline-flex;align-items:center;gap:7px;flex-shrink:0;padding:9px 13px;border:1px solid #b7cce2;border-radius:999px;background:#edf2f8;color:#17436e;font:inherit;font-weight:700;font-size:.9rem;cursor:pointer}
+.theme-toggle:hover{background:#dce8f5}
+.nav-actions{display:flex;align-items:center;gap:18px}
+[data-theme="dark"]{color-scheme:dark;--bg:#07111f;--panel:#112138;--panel2:#182c47;--text:#f1f6fd;--muted:#c0cde0;--line:#35506e;--blue:#86b9ff;--mint:#77e2ca}
+[data-theme="dark"] body{background:linear-gradient(180deg,#07111f,#102038 55%,#07111f);color:var(--text)}
+[data-theme="dark"] nav{background:rgba(7,17,31,.94);border-color:#30445e;box-shadow:none}
+[data-theme="dark"] .brand,[data-theme="dark"] .hero h1,[data-theme="dark"] h2,[data-theme="dark"] h3{color:#f2f7ff}
+[data-theme="dark"] .links,[data-theme="dark"] .lead{color:#c0cde0}
+[data-theme="dark"] .links a:hover{color:#a6d4ff}
+[data-theme="dark"] .pill{background:#113c3a;border-color:#2e8078;color:#a0f3dc}
+[data-theme="dark"] .snapshot,[data-theme="dark"] .card,[data-theme="dark"] .project,[data-theme="dark"] .chat{background:#112138;border-color:#35506e;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+[data-theme="dark"] .snapshot p,[data-theme="dark"] .card p,[data-theme="dark"] .project p,[data-theme="dark"] .item p{color:#c0cde0}
+[data-theme="dark"] .btn{background:#152941;color:#e3efff;border-color:#466789}
+[data-theme="dark"] .btn.primary{background:#377cdb;border-color:#377cdb;color:#fff}
+[data-theme="dark"] .btn.primary:hover{background:#2469c7}
+[data-theme="dark"] .tag{background:#182d47;color:#e0ecfc;border-color:#456080}
+[data-theme="dark"] .chatHead{background:#172b45;border-color:#35506e;color:#f0f6ff}
+[data-theme="dark"] .messages{background:#0c192c}
+[data-theme="dark"] .bot{--bubble-color:#1c3554;background:var(--bubble-color);color:#f0f6ff;border-color:#345472}
+[data-theme="dark"] .user{--bubble-color:#306fce;background:var(--bubble-color);color:#fff}
+[data-theme="dark"] .quick button{background:#172b45;color:#e4f1ff;border-color:#44658b}
+[data-theme="dark"] .quick button:hover{background:#254365}
+[data-theme="dark"] .inputRow{background:#112138;border-color:#35506e}
+[data-theme="dark"] .inputRow input{background:#0b1a2d;color:#f4f8ff;border-color:#54718f}
+[data-theme="dark"] .inputRow input::placeholder{color:#b6c6db}
+[data-theme="dark"] .inputRow button{background:#4d94ee;color:#07182a}
+[data-theme="dark"] .inputRow button:hover{background:#80b6fa}
+[data-theme="dark"] .theme-toggle{background:#1a3452;color:#f2f8ff;border-color:#537495}
+[data-theme="dark"] .theme-toggle:hover{background:#254a70}
+[data-theme="dark"] footer{background:#0a1728;color:#b9c9dd;border-color:#30445e}
+@media(max-width:820px){.nav-actions{gap:12px}.theme-toggle{padding:8px 11px}}
+
+/* Professional hero with custom vector AI graphic */
+.heroGrid{grid-template-columns:1.04fr .96fr;gap:42px}
+.hero-copy{min-width:0}
+.hero-name-accent{color:#1766ae}
+.hero-role{font-size:clamp(1.25rem,2.5vw,1.9rem);font-weight:750;color:#254d78;margin:0 0 12px;letter-spacing:-.025em}
+.hero .lead{max-width:600px}
+.hero .pill{font-size:.72rem;letter-spacing:.07em}
+.hero .buttons{margin-top:28px}
+.hero .btn{align-items:center;gap:8px}
+.hero-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:38px}
+.hero-facts>div{background:#e1e9f1;border:1px solid #c7d4e1;border-radius:13px;padding:13px 12px}
+.hero-facts strong,.hero-facts span{display:block}
+.hero-facts strong{color:#155b9b;font-size:1rem}
+.hero-facts span{color:#4b6076;font-size:.74rem;line-height:1.45;margin-top:2px}
+.hero-visual{border-radius:24px;border:1px solid #c2d0df;background:linear-gradient(145deg,#e2ebf4,#eef3f8 65%,#dfebf2);padding:20px;box-shadow:0 18px 40px rgba(24,60,99,.09);overflow:hidden}
+.visual-label{font-size:.72rem;font-weight:800;letter-spacing:.12em;color:#39617f;display:flex;align-items:center;gap:9px}
+.visual-status{height:9px;width:9px;border-radius:50%;background:#13846f;box-shadow:0 0 0 4px #cbe7df}
+.ai-graphic{display:block;width:100%;height:auto;max-height:336px}
+.ai-center{fill:#173f69;stroke:#5ba5d4;stroke-width:2}
+.ai-center-text{fill:#fff;font:800 37px Inter,system-ui,sans-serif;letter-spacing:.02em}
+.ai-small-labels{fill:#315b80;font:700 11px Inter,system-ui,sans-serif;letter-spacing:.1em}
+.visual-foot{border-top:1px solid #c5d4e2;padding-top:15px;display:grid;gap:12px}
+.visual-foot span,.visual-foot strong{display:block}
+.visual-foot span{color:#587089;font-size:.65rem;font-weight:800;letter-spacing:.1em}
+.visual-foot strong{color:#203e5c;font-size:.87rem;line-height:1.5}
+[data-theme="dark"] .hero-name-accent{color:#85baff}
+[data-theme="dark"] .hero-role{color:#b3d5ff}
+[data-theme="dark"] .hero-facts>div{background:#182e49;border-color:#3b5673}
+[data-theme="dark"] .hero-facts strong{color:#9ac9ff}
+[data-theme="dark"] .hero-facts span{color:#c0d0e3}
+[data-theme="dark"] .hero-visual{background:linear-gradient(145deg,#11243b,#1a314c 65%,#10253b);border-color:#3e5c7b;box-shadow:0 18px 40px rgba(0,0,0,.2)}
+[data-theme="dark"] .visual-label{color:#b1d3f4}
+[data-theme="dark"] .visual-status{box-shadow:0 0 0 4px #1e554c}
+[data-theme="dark"] .ai-small-labels{fill:#acd0f0}
+[data-theme="dark"] .visual-foot{border-color:#3d5774}
+[data-theme="dark"] .visual-foot span{color:#abc1d9}
+[data-theme="dark"] .visual-foot strong{color:#f0f6ff}
+@media(max-width:820px){.heroGrid{grid-template-columns:1fr;gap:28px}.hero-visual{max-width:600px;width:100%;margin:auto}.hero-facts{margin-top:26px}}
+@media(max-width:480px){.hero-facts{gap:7px}.hero-facts>div{padding:10px 8px}.hero-facts span{font-size:.66rem}.hero-visual{padding:15px}.hero .pill{letter-spacing:.03em;font-size:.66rem}}
+
+/* Project discovery and accessible filter controls */
+.projects-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:21px}
+.section-eyebrow{display:block;font-size:.72rem;font-weight:800;letter-spacing:.14em;color:#1765a4;margin-bottom:10px}
+.projects-head h2{margin-bottom:9px}
+.projects-intro{color:var(--muted);max-width:690px;margin:0}
+.project-count{font-size:.8rem;font-weight:700;color:#49627b;white-space:nowrap;border:1px solid #c4d2e0;background:#e5ecf3;border-radius:100px;padding:8px 12px}
+.project-filters{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:21px}
+.project-filters button{padding:10px 15px;background:#e5ecf4;color:#244968;border:1px solid #c5d3e1;border-radius:100px;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.project-filters button:hover{background:#dbe7f2}
+.project-filters button.active{background:#155fa8;color:#fff;border-color:#155fa8}
+.projects{grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.project-card{min-height:247px;padding:23px;display:flex;flex-direction:column;gap:9px}
+.project-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:5px}
+.project-mark{display:grid;place-items:center;height:43px;width:43px;flex-shrink:0;background:#dcebf8;border:1px solid #b9d4e9;border-radius:13px;color:#165d9f;font-weight:900;font-size:.85rem}
+.project-category{font-size:.69rem;font-weight:750;color:#196c65;background:#dcefe9;padding:5px 9px;border-radius:100px;text-align:right}
+.project-card h3{font-size:1.05rem;line-height:1.4;margin:0}
+.project-card p{font-size:.9rem;line-height:1.65;margin:0;flex:1}
+.project-card-foot{font-size:.67rem;font-weight:800;letter-spacing:.1em;color:#58728b;border-top:1px solid #d0dce8;padding-top:12px;margin-top:5px}
+.projects-footer{display:flex;justify-content:center;margin-top:25px}
+.project-more{cursor:pointer;font:inherit}
+.project-more[hidden]{display:none}
+[data-theme="dark"] .section-eyebrow{color:#98c8ff}
+[data-theme="dark"] .project-count{color:#c4d5e8;background:#182e48;border-color:#46617e}
+[data-theme="dark"] .project-filters button{background:#192e48;color:#d5e6fa;border-color:#425f7d}
+[data-theme="dark"] .project-filters button:hover{background:#244261}
+[data-theme="dark"] .project-filters button.active{background:#377cdb;color:#fff;border-color:#377cdb}
+[data-theme="dark"] .project-mark{background:#214163;border-color:#426c94;color:#b2d7ff}
+[data-theme="dark"] .project-category{background:#174b46;color:#a6eedc}
+[data-theme="dark"] .project-card-foot{border-color:#3e5672;color:#afc5de}
+@media(max-width:1000px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.projects{grid-template-columns:1fr}.projects-head{align-items:start;flex-direction:column}.project-card{min-height:0}.project-filters button{padding:9px 12px}}
+
+/* Grouped professional skills */
+.skills-heading{max-width:750px;margin-bottom:23px}
+.skills-heading h2{margin:0 0 10px}
+.skills-intro{margin:0;color:var(--muted)}
+.skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.skill-card{background:#f0f4f8;border:1px solid #c4d2df;box-shadow:0 10px 25px rgba(18,51,92,.05);border-radius:20px;padding:24px;min-width:0}
+.skill-card-wide{grid-column:1/-1}
+.skill-card-header{display:flex;gap:13px;align-items:center;margin-bottom:19px}
+.skill-icon{display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;border:1px solid #b3d2e6;border-radius:14px;background:#dcebf7;color:#155c9a;font-size:.78rem;font-weight:850;letter-spacing:.02em}
+.skill-card h3{font-size:1.12rem;line-height:1.35;margin:0 0 3px}
+.skill-card-header p{font-size:.81rem;color:#536981;margin:0;line-height:1.5}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+.skill-tags span{display:inline-flex;align-items:center;padding:7px 11px;border-radius:8px;border:1px solid #cedbe7;background:#e6edf5;color:#284766;font-weight:620;font-size:.8rem;line-height:1.4}
+[data-theme="dark"] .skill-card{background:#13263d;border-color:#3d5976;box-shadow:0 10px 25px rgba(0,0,0,.12)}
+[data-theme="dark"] .skill-icon{background:#203e5b;border-color:#4b7193;color:#b1dcff}
+[data-theme="dark"] .skill-card-header p{color:#bbccdf}
+[data-theme="dark"] .skill-tags span{background:#20364f;border-color:#476480;color:#dfedfc}
+@media(max-width:700px){.skills-grid{grid-template-columns:1fr}.skill-card-wide{grid-column:auto}.skill-card{padding:19px}.skill-card-header{align-items:flex-start}}
+
+/* Career section: distinguish professional experience from education */
+.experience-heading{max-width:760px;margin-bottom:26px}
+.experience-heading h2{margin:0 0 9px}
+.experience-heading>p{color:var(--muted);margin:0}
+.career-layout{display:grid;grid-template-columns:1.08fr .92fr;gap:22px;align-items:start}
+.career-column{min-width:0}
+.career-column-title{display:flex;align-items:center;gap:11px;font-size:1.06rem;margin:0 0 15px}
+.career-icon{display:grid;place-items:center;flex-shrink:0;width:33px;height:33px;border-radius:10px;background:#dcebf7;color:#155b9b;font-size:.75rem;font-weight:850;border:1px solid #bcd3e8}
+.career-card{background:#f0f4f8;border:1px solid #c4d2df;border-radius:19px;padding:24px;box-shadow:0 9px 25px rgba(18,51,92,.05)}
+.career-card-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;margin-bottom:15px}
+.career-type{display:inline-flex;background:#dcece9;color:#176c61;font-size:.69rem;font-weight:850;letter-spacing:.07em;padding:6px 9px;border-radius:100px}
+.career-date{color:#45627e;font-size:.81rem;font-weight:700}
+.career-card h4{font-size:1.3rem;line-height:1.38;margin:0 0 5px;color:#1c3858}
+.career-org{font-size:.9rem;font-weight:750;color:#245f94;margin:0 0 14px}
+.career-card>p:not(.career-org):not(.education-date){color:var(--muted);font-size:.9rem;line-height:1.7}
+.career-points{color:#38536f;padding-left:20px;margin:15px 0 0;display:grid;gap:11px;line-height:1.65;font-size:.9rem}
+.career-points li::marker{color:#1766ae}
+.education-stack{display:grid;gap:13px}
+.education-card{padding:20px 22px}
+.education-card h4{font-size:1.02rem;margin:10px 0 6px}
+.education-card .career-org{margin:0;color:#365b7e;font-size:.85rem}
+.education-date{font-size:.79rem;color:#526b83;font-weight:700;margin:7px 0 0}
+.education-card>p:not(.career-org):not(.education-date){margin:10px 0 0;font-size:.82rem}
+[data-theme="dark"] .career-icon{background:#213f5d;color:#a8d4ff;border-color:#4a7193}
+[data-theme="dark"] .career-card{background:#13263d;border-color:#3d5976;box-shadow:0 10px 25px rgba(0,0,0,.12)}
+[data-theme="dark"] .career-type{background:#174c46;color:#b0eddf}
+[data-theme="dark"] .career-date,[data-theme="dark"] .education-date{color:#bfd0e2}
+[data-theme="dark"] .career-card h4{color:#f1f7ff}
+[data-theme="dark"] .career-org,[data-theme="dark"] .education-card .career-org{color:#b2d6fb}
+[data-theme="dark"] .career-points{color:#d3e1f0}
+[data-theme="dark"] .career-points li::marker{color:#90c4ff}
+@media(max-width:820px){.career-layout{grid-template-columns:1fr;gap:29px}.career-card{padding:21px}}
+
+/* Secure AI chat integration (activated after backend URL is configured) */
+.chatHead{flex-wrap:wrap}
+.assistant-mode{margin-left:auto;color:#245b84;background:#dceaf6;padding:4px 8px;border-radius:999px;font-size:.7rem;font-weight:750}
+.turnstile-area{padding:13px 16px;background:#e9f1f8;border-top:1px solid #cddce9}
+.turnstile-area[hidden]{display:none}
+.turnstile-area p{font-size:.76rem;color:#4d657a;margin:7px 0 0}
+.inputRow button:disabled{opacity:.55;cursor:wait}
+[data-theme="dark"] .assistant-mode{background:#214568;color:#c3e1ff}
+[data-theme="dark"] .turnstile-area{background:#142b44;border-color:#405c78}
+[data-theme="dark"] .turnstile-area p{color:#bfcee2}
+
+/* Floating assistant: visible on every section, without covering the page until opened. */
+.assistant-launcher{position:fixed;right:clamp(14px,3vw,36px);bottom:clamp(16px,3vw,30px);z-index:100;display:flex;align-items:center;gap:11px;border:2px solid #d6edff;border-radius:999px;padding:10px 17px 10px 11px;background:linear-gradient(135deg,#075bb4,#087f9a);color:#fff;box-shadow:0 8px 27px rgba(0,75,146,.3);cursor:pointer;font:inherit;text-align:start;animation:launcher-bob 3.3s ease-in-out infinite}
+.assistant-launcher::before{content:"";position:absolute;inset:-6px;border:2px solid rgba(25,129,215,.28);border-radius:inherit;animation:launcher-pulse 2.8s ease-out infinite;pointer-events:none}
+.launcher-icon{display:grid;place-items:center;width:45px;height:45px;flex-shrink:0;border-radius:50%;background:rgba(255,255,255,.19);font-size:1.7rem;animation:launcher-sparkle 3.3s ease-in-out infinite}
+.launcher-label{display:flex;flex-direction:column;line-height:1.3;white-space:nowrap}.launcher-label strong{font-size:.91rem}.launcher-label small{font-size:.75rem;color:#e0faff}
+.launcher-online{width:9px;height:9px;background:#63efb3;border:2px solid #fff;border-radius:50%;align-self:flex-start}
+.assistant-launcher:hover{filter:brightness(1.1);box-shadow:0 12px 32px rgba(0,75,146,.4)}
+.assistant-launcher:focus-visible,.assistant-close:focus-visible{outline:3px solid #e39a28;outline-offset:4px}
+.assistant-widget{position:fixed;z-index:101;right:clamp(14px,3vw,36px);bottom:104px;width:min(420px,calc(100vw - 28px));height:min(610px,calc(100dvh - 126px));padding:0;box-shadow:0 18px 60px rgba(11,35,68,.26);border-radius:19px;animation:widget-enter .25s ease-out both}
+.assistant-widget[hidden]{display:none}
+.assistant-widget .chat{height:100%;display:flex;flex-direction:column;overflow:hidden;border-radius:19px}
+.assistant-widget .chatHead{flex-shrink:0;padding:12px;gap:7px}
+.assistant-widget .chatHead strong{font-size:.87rem}
+.assistant-widget .assistant-mode{font-size:.66rem;margin-left:auto;white-space:nowrap}
+.assistant-close{border:0;background:transparent;color:inherit;font-size:1.75rem;line-height:1;cursor:pointer;padding:0 4px}
+.assistant-widget .messages{height:auto;min-height:0;flex:1;overflow-y:auto}
+.assistant-widget .turnstile-area,.assistant-widget .quick,.assistant-widget .inputRow{flex-shrink:0}
+.assistant-widget .turnstile-area{padding-top:8px;padding-bottom:5px}
+.assistant-widget .quick{padding-top:6px;padding-bottom:7px}
+.assistant-widget .inputRow{padding:9px}
+@keyframes launcher-bob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes launcher-pulse{0%{opacity:.8;scale:1}70%,100%{opacity:0;scale:1.1}}
+@keyframes launcher-sparkle{0%,100%{rotate:-8deg}50%{rotate:12deg}}
+@keyframes widget-enter{from{opacity:0;translate:0 12px;scale:.97}to{opacity:1;translate:0 0;scale:1}}
+@media(max-width:480px){.assistant-launcher{right:12px;bottom:12px;padding:7px 12px 7px 7px}.launcher-icon{width:39px;height:39px}.assistant-widget{right:8px;bottom:79px;width:calc(100vw - 16px);height:min(600px,calc(100dvh - 96px))}.assistant-widget .messages{min-height:0;height:auto}}
+@media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-launcher::before,.launcher-icon,.assistant-widget{animation:none}}
+
+/* Brief, attention-catching welcome; it plays once per page load. */
+.assistant-greeting{position:fixed;z-index:100;right:clamp(14px,3vw,36px);bottom:clamp(103px,9vw,118px);display:flex;align-items:center;gap:10px;max-width:calc(100vw - 30px);padding:12px 18px;border:1px solid #b5d9fb;border-radius:17px;background:#fff;color:#133d67;box-shadow:0 14px 34px rgba(13,70,124,.24);pointer-events:none;opacity:0;animation:greeting-hello 6s ease-in-out .6s both}
+.assistant-greeting::after{content:"";position:absolute;right:30px;bottom:-10px;width:18px;height:18px;background:#fff;border-right:1px solid #b5d9fb;border-bottom:1px solid #b5d9fb;transform:rotate(45deg)}
+.assistant-greeting span:last-child{display:flex;flex-direction:column;line-height:1.4}.assistant-greeting strong{font-size:.94rem}.assistant-greeting small{font-size:.8rem;color:#385d7e}
+.greeting-wave{font-size:1.55rem;animation:greeting-wave 1s ease-in-out .9s 3}
+.assistant-greeting.greeting-dismissed{display:none}
+@keyframes launcher-intro{0%{opacity:0;scale:.45;rotate:-16deg}55%{opacity:1;scale:1.16;rotate:7deg}75%{scale:.94;rotate:-3deg}100%{scale:1;rotate:0}}
+@keyframes greeting-hello{0%,5%{opacity:0;translate:0 18px;scale:.88}14%,76%{opacity:1;translate:0 0;scale:1}90%,100%{opacity:0;translate:0 -8px;scale:.98}}
+@keyframes greeting-wave{0%,100%{rotate:0}35%{rotate:22deg}70%{rotate:-10deg}}
+.assistant-launcher{animation:launcher-intro 1.05s cubic-bezier(.18,1.2,.32,1) both,launcher-bob 3.3s ease-in-out 1.1s infinite}
+@media(max-width:480px){.assistant-greeting{right:12px;bottom:87px;padding:10px 13px}}
+@media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-greeting,.greeting-wave{animation:none}.assistant-greeting{display:none}}
 </style>
 </head>
 <body>
-<nav><div class="wrap nav"><div class="brand">Al-Tayeb Talal</div><div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#assistant">Ask Assistant</a></div></div></nav>
-<header class="hero"><div class="wrap heroGrid"><div><span class="pill">Data Science · BI · AI/ML</span><h1>Al-Tayeb<br>Talal</h1><p class="lead">Data Scientist & Business Intelligence Specialist focused on banking analytics, machine learning, automation, dashboards, data quality and practical AI solutions.</p><div class="buttons"><a class="btn primary" href="#assistant">Ask about Al-Tayeb</a><a class="btn" href="mailto:taibfaiu@gmail.com">Email</a><a class="btn" href="https://github.com/taibfaiu-creator" target="_blank" rel="noopener">GitHub</a></div></div><aside class="snapshot"><div class="avatar">AT</div><h2>Professional Snapshot</h2><p><strong>Current role:</strong> Data Scientist, The National Bank (TNB)</p><p><strong>Location:</strong> Palestine</p><p><strong>Education:</strong> B.S. Electrical Engineering</p><p><strong>Focus:</strong> Banking analytics, ML, BI, automation and AI assistants</p></aside></div></header>
+<nav><div class="wrap nav"><div class="brand">Al-Tayeb Talal</div><div class="links"><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#assistant">Ask Assistant</a></div><button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">🌙 Dark</button></div></div></nav>
+<header class="hero"><div class="wrap heroGrid">
+<div class="hero-copy">
+  <span class="pill">DATA SCIENCE · ARTIFICIAL INTELLIGENCE · BANKING</span>
+  <h1>Al-Tayeb<br><span class="hero-name-accent">Talal</span></h1>
+  <p class="hero-role">Data Scientist <span aria-hidden="true">&amp;</span> AI Specialist</p>
+  <p class="lead">Building intelligent solutions through machine learning, banking analytics, and AI-powered applications.</p>
+  <div class="buttons">
+    <a class="btn primary" href="#projects">Explore Projects <span aria-hidden="true">↗</span></a>
+    <a class="btn" href="#assistant">Ask My AI Assistant</a>
+    <a class="btn" href="mailto:taibfaiu@gmail.com">Contact Me</a>
+  </div>
+  <div class="hero-facts" aria-label="Areas of expertise">
+    <div><strong>AI / ML</strong><span>Intelligent Systems</span></div>
+    <div><strong>Banking</strong><span>Domain Expertise</span></div>
+    <div><strong>BI</strong><span>Data Insights</span></div>
+  </div>
+</div>
+<aside class="hero-visual" aria-label="Professional profile and abstract artificial intelligence graphic">
+  <div class="visual-label"><span class="visual-status" aria-hidden="true"></span> DATA-DRIVEN THINKING</div>
+  <svg class="ai-graphic" viewBox="0 0 440 326" role="img" aria-labelledby="aiVisualTitle aiVisualDesc" xmlns="http://www.w3.org/2000/svg">
+    <title id="aiVisualTitle">Abstract data science and artificial intelligence network</title>
+    <desc id="aiVisualDesc">Connected data points around a central AI symbol, representing machine learning, analytical systems, and banking information.</desc>
+    <defs>
+      <linearGradient id="aiLines" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1C6BC1"/><stop offset="1" stop-color="#10947D"/></linearGradient>
+      <radialGradient id="aiGlow"><stop stop-color="#2A8FCA" stop-opacity=".22"/><stop offset="1" stop-color="#2A8FCA" stop-opacity="0"/></radialGradient>
+    </defs>
+    <circle cx="220" cy="160" r="142" fill="url(#aiGlow)"/>
+    <g fill="none" stroke="url(#aiLines)" stroke-width="1.8" opacity=".67">
+      <path d="M220 160L96 72 57 161 129 269 220 160 323 73 382 165 313 267 220 160M96 72L323 73M57 161L382 165M129 269L313 267"/>
+      <path d="M96 72L129 269M323 73L313 267"/>
+    </g>
+    <g fill="#1A74BC">
+      <circle cx="96" cy="72" r="7"/><circle cx="57" cy="161" r="6"/><circle cx="129" cy="269" r="7"/>
+    </g>
+    <g fill="#128D7C"><circle cx="323" cy="73" r="7"/><circle cx="382" cy="165" r="6"/><circle cx="313" cy="267" r="7"/></g>
+    <g fill="none" stroke="url(#aiLines)" stroke-width="2">
+      <circle cx="220" cy="160" r="71"/><circle cx="220" cy="160" r="58" stroke-dasharray="5 9" opacity=".5"/>
+    </g>
+    <circle class="ai-center" cx="220" cy="160" r="49"/>
+    <text x="220" y="173" text-anchor="middle" class="ai-center-text">AI</text>
+    <g class="ai-small-labels" text-anchor="middle">
+      <text x="96" y="51">DATA</text><text x="342" y="55">ML</text><text x="385" y="191">BI</text><text x="115" y="300">INSIGHTS</text>
+    </g>
+  </svg>
+  <div class="visual-foot">
+    <div><span>PROFESSIONAL IDENTITY</span><strong>Data Scientist &amp; Artificial Intelligence Specialist</strong></div>
+    <div><span>CURRENT ROLE</span><strong>The National Bank (TNB) · Palestine</strong></div>
+  </div>
+</aside>
+</div></header>
 <main>
 <section id="about"><div class="wrap"><h2>About</h2><div class="card"><p>Strategic Data Scientist and BI Specialist experienced in translating business requirements into data-driven solutions. His work spans financial dashboards, automated analytics workflows, customer analytics, banking chatbots, data quality, machine learning and customer segmentation.</p></div></div></section>
-<section id="skills"><div class="wrap"><h2>Core Skills</h2><div class="tags"><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">Scikit-learn</span><span class="tag">Classification</span><span class="tag">Regression</span><span class="tag">Feature Engineering</span><span class="tag">Model Evaluation</span><span class="tag">ARIMA / SARIMA</span><span class="tag">SHAP</span><span class="tag">KNIME</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Computer Vision</span><span class="tag">ODI</span><span class="tag">Data Quality</span><span class="tag">JIRA</span><span class="tag">Git / GitHub</span></div></div></section>
-<section id="projects"><div class="wrap"><h2>Selected Projects</h2><div class="projects" id="projectsList"></div></div></section>
-<section id="experience"><div class="wrap"><h2>Experience & Education</h2><div class="timeline"><div class="item"><h3>Data Scientist · The National Bank (TNB)</h3><p>May 2024 – Present · Financial BI dashboards, automated Python/KNIME workflows, predictive customer analytics, banking chatbot solutions, integrations and customer segmentation.</p></div><div class="item"><h3>Data Science & Artificial Intelligence for the Banking Sector</h3><p>Palestine Banking Institute · 2024–2025 · Banking-focused training in customer analytics, risk/credit concepts, operational intelligence and governance.</p></div><div class="item"><h3>Data Science & Machine Learning Bootcamp</h3><p>AXSOS Academy · 2023–2024 · Intensive training in data science, machine learning, time series, deep learning and computer vision.</p></div><div class="item"><h3>B.S. Electrical Engineering</h3><p>Palestine Technical University of Kadoorie (PTUK) · 2020</p></div></div></div></section>
-<section id="assistant"><div class="wrap"><h2>Ask About Al-Tayeb</h2><div class="assistantGrid"><div class="card"><h3>Profile Assistant</h3><p>This assistant is intentionally limited to Al-Tayeb's professional profile. Ask about experience, banking projects, machine learning, BI, education or contact information.</p><p><strong>Note:</strong> It does not answer unrelated questions.</p></div><div class="chat"><div class="chatHead"><span class="dot"></span><strong>Al-Tayeb Profile Assistant</strong></div><div class="messages" id="messages"></div><div class="quick"><button data-q="Tell me about his banking projects">Banking projects</button><button data-q="What are his machine learning skills?">ML skills</button><button data-q="What is his experience?">Experience</button><button data-q="What is his education?">Education</button></div><form class="inputRow" id="form"><input id="input" autocomplete="off" placeholder="Ask about Al-Tayeb..."><button>Send</button></form></div></div></div></section>
+<section id="skills"><div class="wrap">
+  <div class="skills-heading"><span class="section-eyebrow">TECHNICAL TOOLKIT</span><h2>Skills &amp; Expertise</h2><p class="skills-intro">A practical mix of machine learning, AI development, banking analytics, and data engineering.</p></div>
+  <div class="skills-grid">
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">ML</span><div><h3>Data Science &amp; Machine Learning</h3><p>Modeling, validation and interpretable analytics</p></div></div><div class="skill-tags"><span>Python</span><span>NumPy</span><span>Pandas</span><span>Scikit-learn</span><span>Classification &amp; Regression</span><span>Feature Engineering</span><span>Model Evaluation</span><span>ARIMA / SARIMA</span><span>SHAP</span></div></article>
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">AI</span><div><h3>Artificial Intelligence</h3><p>Deep learning and conversational AI applications</p></div></div><div class="skill-tags"><span>TensorFlow</span><span>Keras</span><span>Deep Neural Networks</span><span>Computer Vision</span><span>Rasa</span><span>Conversational AI</span><span>LLM Applications</span></div></article>
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">BI</span><div><h3>Business Intelligence</h3><p>Decision support and visual analytics</p></div></div><div class="skill-tags"><span>Power BI</span><span>Tableau</span><span>Financial Dashboards</span><span>Management Reporting</span><span>Data Visualization</span></div></article>
+    <article class="skill-card"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">DE</span><div><h3>Data Engineering &amp; Integration</h3><p>Data preparation, quality and service connectivity</p></div></div><div class="skill-tags"><span>SQL</span><span>Oracle</span><span>ODI</span><span>KNIME</span><span>Data Quality</span><span>ETL Workflows</span><span>REST APIs</span></div></article>
+    <article class="skill-card skill-card-wide"><div class="skill-card-header"><span class="skill-icon" aria-hidden="true">DEV</span><div><h3>Programming &amp; Delivery Tools</h3><p>Implementation, collaboration and version control</p></div></div><div class="skill-tags"><span>Python</span><span>Java</span><span>Git / GitHub</span><span>JIRA</span><span>VS Code</span><span>Google Colab</span></div></article>
+  </div>
+</div></section>
+<section id="projects"><div class="wrap">
+  <div class="projects-head"><div><span class="section-eyebrow">SELECTED WORK</span><h2>Projects &amp; Applied Solutions</h2><p class="projects-intro">A selection of data science, banking analytics, and AI projects. Explore by focus area, or view the complete portfolio.</p></div><span class="project-count" id="projectCount" aria-live="polite"></span></div>
+  <div class="project-filters" id="projectFilters" role="group" aria-label="Filter projects by topic">
+    <button type="button" class="active" data-filter="all" aria-pressed="true">All projects</button>
+    <button type="button" data-filter="banking" aria-pressed="false">Banking &amp; AI</button>
+    <button type="button" data-filter="ml" aria-pressed="false">Machine Learning</button>
+    <button type="button" data-filter="bi" aria-pressed="false">Business Intelligence</button>
+  </div>
+  <div class="projects" id="projectsList"></div>
+  <div class="projects-footer"><button type="button" id="showProjects" class="btn project-more" aria-expanded="false">View all projects ↓</button></div>
+</div></section>
+<section id="experience"><div class="wrap">
+  <div class="experience-heading"><span class="section-eyebrow">CAREER &amp; LEARNING</span><h2>Experience &amp; Education</h2><p>Professional work in banking data science, supported by an engineering background and specialized AI training.</p></div>
+  <div class="career-layout">
+    <div class="career-column">
+      <h3 class="career-column-title"><span class="career-icon" aria-hidden="true">01</span> Professional Experience</h3>
+      <article class="career-card">
+        <div class="career-card-top"><span class="career-type">CURRENT ROLE</span><span class="career-date">May 2024 – Present</span></div>
+        <h4>Data Scientist</h4>
+        <p class="career-org">The National Bank (TNB) · Palestine</p>
+        <p>Applying data science and analytics to banking use cases, with a focus on actionable insights and practical AI solutions.</p>
+        <ul class="career-points">
+          <li>Financial reporting dashboards with Power BI, including management indicators.</li>
+          <li>Automated analytics and data workflows using Python and KNIME.</li>
+          <li>Banking customer-service chatbot and API-connected workflows.</li>
+          <li>Customer analytics, predictive modeling, and customer segmentation.</li>
+        </ul>
+      </article>
+    </div>
+    <div class="career-column">
+      <h3 class="career-column-title"><span class="career-icon" aria-hidden="true">02</span> Education &amp; Professional Training</h3>
+      <div class="education-stack">
+        <article class="career-card education-card"><span class="career-type">ACADEMIC DEGREE</span><h4>B.S. Electrical Engineering</h4><p class="career-org">Palestine Technical University of Kadoorie (PTUK)</p><p class="education-date">2020</p></article>
+        <article class="career-card education-card"><span class="career-type">SPECIALIZED TRAINING</span><h4>Data Science &amp; Artificial Intelligence for the Banking Sector</h4><p class="career-org">Palestine Banking Institute</p><p class="education-date">2024–2025</p></article>
+        <article class="career-card education-card"><span class="career-type">BOOTCAMP</span><h4>Data Science &amp; Machine Learning</h4><p class="career-org">AXSOS Academy</p><p class="education-date">2023–2024</p><p>Intensive training in analytics, machine learning, time series, deep learning, and computer vision.</p></article>
+      </div>
+    </div>
+  </div>
+</div></section>
+<div id="assistantGreeting" class="assistant-greeting" aria-hidden="true"><span class="greeting-wave">👋</span><span><strong>مرحبًا بك!</strong><small>اسألني عن الطيب ومشاريعه</small></span></div><button id="assistantLauncher" class="assistant-launcher" type="button" aria-controls="assistant" aria-expanded="false" aria-label="Open Al-Tayeb AI assistant"><span class="launcher-icon" aria-hidden="true">✦</span><span class="launcher-label"><strong>Ask Al-Tayeb AI</strong><small>اسأل مساعدي الذكي</small></span><span class="launcher-online" aria-hidden="true"></span></button><section id="assistant" class="assistant-widget" aria-label="Al-Tayeb profile assistant" hidden><div class="chat"><div class="chatHead"><span class="dot"></span><strong>Al-Tayeb Profile Assistant</strong><span id="assistantMode" class="assistant-mode" role="status">Profile FAQs</span><button id="assistantClose" class="assistant-close" type="button" aria-label="Close assistant">×</button></div><div class="messages" id="messages"></div><div id="turnstileArea" class="turnstile-area" hidden><div id="turnstileWidget"></div><p id="turnstileStatus" role="status">Loading visitor verification…</p></div><div class="quick"><button data-q="Tell me about his banking projects">Banking projects</button><button data-q="What are his machine learning skills?">ML skills</button><button data-q="What is his experience?">Experience</button><button data-q="What is his education?">Education</button></div><form class="inputRow" id="form"><input id="input" autocomplete="off" placeholder="Ask about Al-Tayeb..."><button>Send</button></form></div></section>
 </main>
 <footer><div class="wrap">© <span id="year"></span> Al-Tayeb Talal · Professional profile</div></footer>
 <script>
@@ -37,11 +393,191 @@ const projects=[
 ["HR Assistant","AI assistant concept for answering HR-related questions and simplifying access to internal HR information and processes."],
 ["Electrical Fault Detection Using ML","ML classification concept for identifying abnormal low-voltage conditions using measurements such as voltage, current and power factor."]
 ];
-document.getElementById('projectsList').innerHTML=projects.map(p=>`<article class="project"><h3>${p[0]}</h3><p>${p[1]}</p></article>`).join('');document.getElementById('year').textContent=new Date().getFullYear();
-const M=document.getElementById('messages'),I=document.getElementById('input');function add(t,c){const d=document.createElement('div');d.className='msg '+c;d.textContent=t;M.appendChild(d);M.scrollTop=M.scrollHeight}add("Hi! I’m Al-Tayeb’s profile assistant. I can answer questions about his professional experience, skills, projects and education.",'bot');
+
+const projectCatalog=[
+  {name:"Banking Customer-Service Chatbot",type:"banking",featured:true,mark:"AI"},
+  {name:"Customer Segmentation",type:"banking",featured:true,mark:"ML"},
+  {name:"Financial Dashboarding for TNB Bank",type:"bi",featured:true,mark:"BI"},
+  {name:"Fraud Detection Using Machine Learning",type:"banking",featured:true,mark:"ML"},
+  {name:"Customer Profitability Prediction",type:"banking",featured:true,mark:"DS"},
+  {name:"Chicago Crime Data — SARIMA Forecasting",type:"ml",featured:true,mark:"TS"},
+  {name:"Branch Profitability Prediction",type:"banking",mark:"DS"},
+  {name:"Customer Suggestion Engine Using LLMs",type:"banking",mark:"AI"},
+  {name:"Voice Agent",type:"banking",mark:"AI"},
+  {name:"HR Assistant",type:"banking",mark:"AI"},
+  {name:"Big Mart Sales Prediction",type:"ml",mark:"ML"},
+  {name:"Cirrhosis Prediction Using DNN",type:"ml",mark:"DL"},
+  {name:"Chest X-ray Classification",type:"ml",mark:"CV"},
+  {name:"Electrical Fault Detection Using ML",type:"ml",mark:"ML"}
+];
+const descriptionByName=new Map(projects.map(p=>[p[0],p[1]]));
+const projectTypeLabels={banking:"Banking & AI",ml:"Machine Learning",bi:"Business Intelligence"};
+const projectList=document.getElementById('projectsList'),projectCount=document.getElementById('projectCount'),showProjects=document.getElementById('showProjects');
+let projectFilter='all',allProjectsVisible=false;
+function renderProjects(){
+  const visible=projectCatalog.filter(p=>projectFilter!=='all'?p.type===projectFilter:(allProjectsVisible||p.featured));
+  projectList.replaceChildren();
+  visible.forEach((project,index)=>{
+    const article=document.createElement('article');article.className='project project-card';
+    const top=document.createElement('div');top.className='project-card-top';
+    const mark=document.createElement('span');mark.className='project-mark';mark.textContent=project.mark;
+    const label=document.createElement('span');label.className='project-category';label.textContent=projectTypeLabels[project.type];
+    top.append(mark,label);
+    const heading=document.createElement('h3');heading.textContent=project.name;
+    const description=document.createElement('p');description.textContent=descriptionByName.get(project.name)||'Project details coming soon.';
+    const footer=document.createElement('div');footer.className='project-card-foot';
+    footer.textContent='PROJECT '+String(projectCatalog.indexOf(project)+1).padStart(2,'0');
+    article.append(top,heading,description,footer);projectList.append(article);
+  });
+  projectCount.textContent=visible.length+' of '+projectCatalog.length+' projects';
+  showProjects.hidden=projectFilter!=='all';
+  showProjects.textContent=allProjectsVisible?'Show featured projects ↑':'View all '+projectCatalog.length+' projects ↓';
+  showProjects.setAttribute('aria-expanded',String(allProjectsVisible));
+}
+document.querySelectorAll('#projectFilters button').forEach(button=>button.addEventListener('click',()=>{
+  projectFilter=button.dataset.filter;
+  document.querySelectorAll('#projectFilters button').forEach(b=>{const selected=b===button;b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected))});
+  renderProjects();
+}));
+showProjects.addEventListener('click',()=>{allProjectsVisible=!allProjectsVisible;renderProjects()});
+renderProjects();document.getElementById('year').textContent=new Date().getFullYear();
+const M=document.getElementById('messages'),I=document.getElementById('input');
+function readableAnswer(text){
+  // Render as text, never HTML. Remove common raw Markdown markers for accessibility.
+  return String(text).replace(/\*\*([^*]+)\*\*/g,'$1').replace(/(^|\n)#{1,6}\s+/g,'$1').replace(/`([^`]+)`/g,'$1');
+}
+function add(t,c){const d=document.createElement('div');d.className='msg '+c;d.setAttribute('dir','auto');d.textContent=c==='bot'?readableAnswer(t):t;M.appendChild(d);M.scrollTop=M.scrollHeight}add("Hi! I’m Al-Tayeb’s profile assistant. I can answer questions about his professional experience, skills, projects and education.",'bot');
 const en={summary:"Al-Tayeb Talal is a Data Scientist and BI Specialist with a background in Electrical Engineering. He focuses on banking analytics, machine learning, automation, BI dashboards, AI assistants, data quality and customer analytics.",role:"Al-Tayeb Talal works as a Data Scientist at The National Bank (TNB) in Palestine since May 2024. His work includes BI dashboards, automated data workflows, customer analytics, banking chatbot solutions and customer segmentation.",banking:"His banking projects include Financial Dashboarding for TNB Bank, a Banking Customer-Service Chatbot, Customer Segmentation, Fraud Detection, Branch Profitability Prediction, Customer Profitability Prediction, an LLM-based Customer Suggestion Engine, a Voice Agent and an HR Assistant.",ml:"His ML toolkit includes Python, NumPy, Pandas, Scikit-learn, classification, regression, feature engineering, model evaluation and optimization, ARIMA/SARIMA, SHAP, TensorFlow, Keras, deep neural networks and computer vision.",bi:"His BI experience includes Power BI, Tableau, advanced dashboard design and SAP-related data integration and analytics. At TNB, he has designed financial dashboards for management reporting including Balance Sheet, P&L and Cash Flow with MTD/YTD measures.",education:"Al-Tayeb holds a B.S. in Electrical Engineering from Palestine Technical University of Kadoorie (PTUK), completed in 2020. He also completed a Data Science & Machine Learning Bootcamp at AXSOS Academy and banking-focused Data Science & AI training at the Palestine Banking Institute.",electrical:"His background is in Electrical Engineering, and his applied ML portfolio includes Electrical Fault Detection for low-voltage systems using measurements such as voltage, current and power factor.",contact:"You can contact Al-Tayeb at taibfaiu@gmail.com or by phone at +972597614002. He is based in Palestine.",projects:"Selected projects include sales prediction, SARIMA forecasting, DNN prediction, chest X-ray classification, banking dashboards, banking chatbot, customer segmentation, fraud detection, profitability prediction, LLM suggestion engine, voice agent, HR assistant and electrical fault detection."};
 const ar={summary:"الطيب طلال Data Scientist وBI Specialist وخلفيته الأكاديمية في الهندسة الكهربائية. يركز على التحليلات المصرفية، Machine Learning، الأتمتة، لوحات BI، مساعدي الذكاء الاصطناعي، جودة البيانات وتحليلات العملاء.",role:"الطيب طلال يعمل Data Scientist في The National Bank (TNB) في فلسطين منذ مايو 2024. تشمل خبرته لوحات BI، أتمتة تدفقات البيانات، تحليلات العملاء، حلول الشات بوت البنكي وCustomer Segmentation.",banking:"من مشاريعه البنكية: Financial Dashboarding، Banking Customer-Service Chatbot، Customer Segmentation، Fraud Detection، Branch Profitability Prediction، Customer Profitability Prediction، Customer Suggestion Engine باستخدام LLMs، Voice Agent وHR Assistant.",ml:"تشمل مهاراته في ML: Python وNumPy وPandas وScikit-learn، التصنيف والانحدار، Feature Engineering، تقييم وتحسين النماذج، ARIMA/SARIMA، SHAP، TensorFlow وKeras وDeep Learning وComputer Vision.",bi:"لديه خبرة في Power BI وTableau وتصميم لوحات المعلومات المتقدمة وSAP. وفي TNB صمم تقارير مالية للإدارة تشمل Balance Sheet وP&L وCash Flow مع مقاييس MTD/YTD.",education:"يحمل الطيب درجة البكالوريوس في الهندسة الكهربائية من جامعة فلسطين التقنية – خضوري (PTUK) عام 2020، وأكمل Bootcamp في Data Science & Machine Learning لدى AXSOS Academy وتدريب Data Science & AI للقطاع المصرفي لدى معهد فلسطين للدراسات المصرفية.",electrical:"خلفيته الأكاديمية في الهندسة الكهربائية، ولديه مشروع Electrical Fault Detection باستخدام ML لاكتشاف الحالات غير الطبيعية في أنظمة الجهد المنخفض بالاعتماد على الجهد والتيار وPower Factor.",contact:"يمكن التواصل مع الطيب عبر البريد taibfaiu@gmail.com أو الهاتف +972597614002، وهو موجود في فلسطين.",projects:"تشمل مشاريعه Sales Prediction، SARIMA Forecasting، DNN Prediction، Chest X-ray Classification، Financial Dashboards، Banking Chatbot، Customer Segmentation، Fraud Detection، Profitability Prediction، LLM Suggestion Engine، Voice Agent، HR Assistant وElectrical Fault Detection."};
 function ans(q){let s=q.toLowerCase(),a=/[\u0600-\u06ff]/.test(q),k='';if(/contact|email|phone|reach|تواصل|ايميل|بريد|هاتف/.test(s))k='contact';else if(/education|degree|university|study|تعليم|دراسة|جامعة|شهادة|تخصص/.test(s))k='education';else if(/electrical|voltage|electric|كهرب|جهد/.test(s))k='electrical';else if(/power bi|tableau|dashboard|business intelligence|\bbi\b|داشبورد|ذكاء الأعمال/.test(s))k='bi';else if(/machine learning|\bml\b|model|deep learning|tensorflow|keras|scikit|sarima|arima|تعلم الالة|تعلم الآلة|نماذج/.test(s))k='ml';else if(/bank|tnb|banking|fraud|branch|customer|بنك|مصرف|احتيال|فرع|عميل/.test(s))k='banking';else if(/project|portfolio|مشروع/.test(s))k='projects';else if(/role|work|experience|job|position|عمل|خبرة|وظيفة|منصب/.test(s))k='role';else if(/who|about|summary|tell me|من هو|عرفني|نبذة|عنه/.test(s))k='summary';if(!k)return a?"أستطيع الإجابة فقط عن الملف المهني للطيب طلال: خبرته، مهاراته، مشاريعه، تعليمه ومعلومات التواصل.":"I can only answer questions about Al-Tayeb Talal’s professional profile: experience, skills, projects, education and contact information.";return (a?ar:en)[k]}
-function ask(q){if(!q.trim())return;add(q,'user');setTimeout(()=>add(ans(q),'bot'),120)}document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();let q=I.value;I.value='';ask(q)});document.querySelectorAll('.quick button').forEach(b=>b.onclick=()=>ask(b.dataset.q));
+
+/* Public site key is safe in browser code. Backend URL is configured after deployment.
+   Never place GEMINI_API_KEY, GROQ_API_KEY or TURNSTILE_SECRET_KEY here. */
+const LOCAL_PREVIEW = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+const CHAT_API_BASE_URL = LOCAL_PREVIEW
+  ? "http://127.0.0.1:8000"
+  : "https://altayeb-ai-backend.onrender.com";
+const TURNSTILE_SITE_KEY = LOCAL_PREVIEW
+  ? "1x00000000000000000000AA" // Official Cloudflare testing key, never for production
+  : "0x4AAAAAAFtNrNfG4u5f8F_T";
+const liveAssistant = Boolean(CHAT_API_BASE_URL.trim());
+const modeLabel = document.getElementById('assistantMode');
+const verificationArea = document.getElementById('turnstileArea');
+const verificationStatus = document.getElementById('turnstileStatus');
+const submitButton = document.querySelector('#form button');
+let turnstileToken = '', turnstileWidgetId = null, sending = false;
+const chatHistory = [];
+modeLabel.textContent = liveAssistant ? 'Live AI · Verification required' : 'Profile FAQs · Preview';
+
+function loadTurnstile() {
+  verificationArea.hidden = false;
+  const script = document.createElement('script');
+  script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  script.async = true;
+  script.onload = () => {
+    if (!window.turnstile) { verificationStatus.textContent = 'Verification unavailable. Please refresh.'; return; }
+    turnstileWidgetId = window.turnstile.render('#turnstileWidget', {
+      sitekey: TURNSTILE_SITE_KEY,
+      theme: document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light',
+      callback: token => { turnstileToken = token; verificationStatus.textContent = 'Verified. You can send your message.'; },
+      'expired-callback': () => { turnstileToken = ''; verificationStatus.textContent = 'Verification expired. Please complete it again.'; },
+      'error-callback': () => { turnstileToken = ''; verificationStatus.textContent = 'Verification failed. Please retry.'; }
+    });
+  };
+  script.onerror = () => { verificationStatus.textContent = 'Could not load verification. Please refresh.'; };
+  document.head.appendChild(script);
+}
+const launcher = document.getElementById('assistantLauncher');
+const assistantPanel = document.getElementById('assistant');
+const closeAssistantButton = document.getElementById('assistantClose');
+let verificationLoaded = false;
+function openAssistant(){
+  document.getElementById('assistantGreeting').classList.add('greeting-dismissed');
+  assistantPanel.hidden = false;
+  launcher.setAttribute('aria-expanded','true');
+  launcher.setAttribute('aria-label','Close Al-Tayeb AI assistant');
+  if(liveAssistant && !verificationLoaded){verificationLoaded=true;loadTurnstile();}
+  requestAnimationFrame(()=>{ M.scrollTop=M.scrollHeight; I.focus({preventScroll:true}); });
+}
+function closeAssistant(){
+  assistantPanel.hidden = true;
+  launcher.setAttribute('aria-expanded','false');
+  launcher.setAttribute('aria-label','Open Al-Tayeb AI assistant');
+  launcher.focus({preventScroll:true});
+}
+launcher.addEventListener('click',()=>assistantPanel.hidden?openAssistant():closeAssistant());
+closeAssistantButton.addEventListener('click',closeAssistant);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!assistantPanel.hidden)closeAssistant();});
+document.querySelectorAll('a[href="#assistant"]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();openAssistant();
+}));
+if(location.hash==='#assistant')openAssistant();
+function resetVerification() {
+  turnstileToken = '';
+  if (window.turnstile && turnstileWidgetId !== null) window.turnstile.reset(turnstileWidgetId);
+  verificationStatus.textContent = 'Checking visitor verification…';
+}
+async function ask(q) {
+  const question = q.trim();
+  if (!question || sending) return;
+  if (!liveAssistant) {
+    add(question, 'user');
+    setTimeout(() => add(ans(question), 'bot'), 120);
+    return;
+  }
+  if (!turnstileToken) {
+    add('Please complete the visitor verification before sending a message.', 'bot');
+    return;
+  }
+  sending = true;
+  submitButton.disabled = true;
+  add(question, 'user');
+  const token = turnstileToken;
+  try {
+    const response = await fetch((CHAT_API_BASE_URL.endsWith('/') ? CHAT_API_BASE_URL.slice(0,-1) : CHAT_API_BASE_URL) + '/api/chat', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({message: question, history: chatHistory.slice(-6), turnstile_token: token})
+    });
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const data = await response.json();
+    if (!data || typeof data.answer !== 'string') throw new Error('Unexpected response');
+    add(data.answer, 'bot');
+    chatHistory.push({role:'user',content:question},{role:'assistant',content:data.answer});
+    while (chatHistory.length > 6) chatHistory.shift();
+    modeLabel.textContent = data.source === 'groq' ? 'Live AI · Backup active' : data.source === 'static' ? 'Profile summary · Limited' : 'Live AI';
+  } catch (err) {
+    add('The AI service is temporarily unavailable. Please try again or explore the Projects and Skills sections.', 'bot');
+  } finally {
+    resetVerification();
+    sending = false;
+    submitButton.disabled = false;
+  }
+}
+document.getElementById('form').addEventListener('submit', e => {
+  e.preventDefault();
+  const q = I.value;
+  if (!q.trim()) return;
+  if (liveAssistant && !turnstileToken) { ask(q); return; }
+  I.value = '';
+  ask(q);
+});
+document.querySelectorAll('.quick button').forEach(b => b.onclick = () => ask(b.dataset.q));
+
+// Theme selection: default light, persist an explicit visitor choice.
+const themeButton=document.getElementById('themeToggle');
+function syncThemeButton(){
+  const dark=document.documentElement.dataset.theme==='dark';
+  themeButton.textContent=dark?'☀️ Light':'🌙 Dark';
+  themeButton.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');
+  themeButton.setAttribute('aria-pressed',String(dark));
+  document.querySelector('meta[name="theme-color"]').content=dark?'#07111f':'#e9eef4';
+}
+themeButton.addEventListener('click',()=>{
+  const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+  document.documentElement.dataset.theme=next;
+  try{localStorage.setItem('portfolio-theme',next)}catch(e){}
+  syncThemeButton();
+});
+syncThemeButton();
 </script>
 </body></html>

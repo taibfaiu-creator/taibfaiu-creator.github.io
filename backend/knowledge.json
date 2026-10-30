@@ -1,0 +1,86 @@
+{
+  "name": "Al-Tayeb Talal",
+  "professional_title": "Data Scientist & Artificial Intelligence Specialist",
+  "location": "Palestine",
+  "contact": {
+    "email": "taibfaiu@gmail.com",
+    "github": "https://github.com/taibfaiu-creator"
+  },
+  "experience": [
+    {
+      "role": "Data Scientist",
+      "organization": "The National Bank (TNB)",
+      "period": "May 2024 – Present",
+      "summary": "Financial dashboards, automated Python/KNIME workflows, customer analytics, banking chatbot and segmentation projects."
+    }
+  ],
+  "education": [
+    {
+      "credential": "B.S. Electrical Engineering",
+      "institution": "Palestine Technical University of Kadoorie",
+      "year": "2020"
+    },
+    {
+      "credential": "Data Science & Machine Learning Bootcamp",
+      "institution": "AXSOS Academy",
+      "period": "2023–2024"
+    },
+    {
+      "credential": "Data Science & AI for Banking Sector training",
+      "institution": "Palestine Banking Institute",
+      "period": "2024–2025"
+    }
+  ],
+  "skills": [
+    "Python",
+    "Pandas",
+    "Scikit-learn",
+    "Machine Learning",
+    "Power BI",
+    "Tableau",
+    "Rasa",
+    "REST APIs",
+    "KNIME",
+    "SQL",
+    "Oracle",
+    "TensorFlow",
+    "Keras",
+    "Computer Vision"
+  ],
+  "projects": [
+    {
+      "title": "Banking Customer-Service Chatbot",
+      "description": "Intent handling, menu navigation and guided banking service workflows."
+    },
+    {
+      "title": "Customer Segmentation",
+      "description": "Customer behavior and value-based segmentation and profiling."
+    },
+    {
+      "title": "Financial Dashboarding for TNB",
+      "description": "Power BI financial dashboards for reporting."
+    },
+    {
+      "title": "Fraud Detection Using Machine Learning",
+      "description": "Classification-oriented banking fraud analysis project."
+    },
+    {
+      "title": "Customer Profitability Prediction",
+      "description": "Predictive analytics approach for customer profitability."
+    },
+    {
+      "title": "Voice Agent",
+      "description": "Conversational voice-agent concept."
+    },
+    {
+      "title": "HR Assistant",
+      "description": "AI assistant concept for HR queries."
+    }
+  ],
+  "boundaries": [
+    "Only public, approved professional facts are included.",
+    "Do not claim unverified project outcomes or production deployments.",
+    "Do not reveal internal bank infrastructure, customer details or confidential data.",
+    "Master's degree information is deliberately excluded."
+  ]
+}
