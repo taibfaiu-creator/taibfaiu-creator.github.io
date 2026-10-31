@@ -268,10 +268,23 @@ footer{border-top:1px solid var(--line);color:#52657c;background:#e0e7ef}
 .assistant-launcher{animation:launcher-intro 1.05s cubic-bezier(.18,1.2,.32,1) both,launcher-bob 3.3s ease-in-out 1.1s infinite}
 @media(max-width:480px){.assistant-greeting{right:12px;bottom:87px;padding:10px 13px}}
 @media(prefers-reduced-motion:reduce){.assistant-launcher,.assistant-greeting,.greeting-wave{animation:none}.assistant-greeting{display:none}}
-.voice-actions{display:flex;flex-direction:column;gap:6px;padding:9px 12px 12px;border-top:1px solid var(--line)}
-.voice-actions button{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--panel2);color:var(--text);font:inherit;font-weight:700;cursor:pointer}
-.voice-actions button:disabled{opacity:.6;cursor:wait}
-.voice-actions span{color:var(--muted);font-size:.75rem;line-height:1.35}
+.voice-actions{display:flex;flex-direction:column;gap:9px;padding:14px 13px 15px;border-top:1px solid var(--line)}
+.voice-actions #voiceToggle{position:relative;isolation:isolate;overflow:visible;display:flex;align-items:center;justify-content:center;gap:9px;width:100%;min-height:52px;border:1px solid rgba(138,213,255,.55);border-radius:16px;padding:13px 16px;background:linear-gradient(110deg,#174a9b 0%,#177bbd 42%,#108a83 100%);background-size:180% 180%;color:#fff;font:inherit;font-weight:800;letter-spacing:.01em;cursor:pointer;box-shadow:0 6px 20px rgba(13,119,182,.23);transition:transform .2s ease,box-shadow .2s ease,filter .2s ease;animation:voice-color-drift 6s ease-in-out infinite,voice-gentle-pulse 2.8s ease-in-out infinite}
+.voice-actions #voiceToggle::before{content:"";position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;background:linear-gradient(108deg,transparent 22%,rgba(255,255,255,.27) 47%,transparent 70%);background-size:240% 100%;animation:voice-shimmer 4.2s ease-in-out infinite;z-index:-1}
+.voice-actions #voiceToggle::after{content:"";position:absolute;inset:-5px;border:2px solid rgba(35,149,215,.5);border-radius:20px;pointer-events:none;animation:voice-halo 2.8s ease-out infinite}
+.voice-actions #voiceToggle:hover{transform:translateY(-2px) scale(1.015);box-shadow:0 10px 28px rgba(13,119,182,.37);filter:brightness(1.09)}
+.voice-actions #voiceToggle:focus-visible{outline:3px solid #6dbaff;outline-offset:5px}
+.voice-actions #voiceToggle[aria-pressed="true"]{background:linear-gradient(115deg,#8a284a,#ba4454);border-color:rgba(255,190,205,.65);box-shadow:0 6px 20px rgba(166,55,79,.22);animation:none}
+.voice-actions #voiceToggle[aria-pressed="true"]::before,.voice-actions #voiceToggle[aria-pressed="true"]::after{animation:none;opacity:0}
+.voice-actions #voiceToggle:disabled{opacity:.65;cursor:wait;animation:none}
+.voice-actions #voiceToggle:disabled::before,.voice-actions #voiceToggle:disabled::after{animation:none;opacity:0}
+.voice-actions span{color:var(--muted);font-size:.75rem;line-height:1.35;text-align:center}
+@keyframes voice-color-drift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes voice-gentle-pulse{0%,100%{box-shadow:0 6px 20px rgba(13,119,182,.23)}50%{box-shadow:0 7px 25px rgba(13,119,182,.42)}}
+@keyframes voice-shimmer{0%,38%{background-position:230% 0}65%,100%{background-position:-150% 0}}
+@keyframes voice-halo{0%{transform:scale(.98);opacity:.6}75%,100%{transform:scale(1.045);opacity:0}}
+@media(prefers-reduced-motion:reduce){.voice-actions #voiceToggle,.voice-actions #voiceToggle::before,.voice-actions #voiceToggle::after{animation:none!important;transition:none!important}.voice-actions #voiceToggle::after{opacity:0}}
+
 </style>
 </head>
 <body>
