@@ -246,3 +246,33 @@ async def chat(payload: ChatRequest, request: Request) -> ChatResponse:
             return ChatResponse(answer=static_answer(payload.message), source="static", fallback_used=True)
     finally:
         provider_slots.release()
+
+
+# ElevenLabs signed WebSocket sessions. Never expose the ElevenLabs API key to browsers.
+class VoiceSessionRequest(BaseModel):
+    turnstile_token: str = Field(min_length=1, max_length=2048)
+
+
+@app.post("/api/voice/signed-url")
+async def voice_signed_url(payload: VoiceSessionRequest, request: Request) -> dict[str, str]:
+    await check_rate_limit(request)
+    # Reuse the same server-side Turnstile verification as the text assistant.
+    await verify_public_access(ChatRequest(message="voice session", turnstile_token=payload.turnstile_token), request)
+    api_key = os.getenv("ELEVENLABS_API_KEY", "").strip()
+    agent_id = os.getenv("ELEVENLABS_AGENT_ID", "").strip()
+    if not api_key or not agent_id:
+        raise HTTPException(status_code=503, detail="Voice assistant is not configured.")
+    try:
+        async with httpx.AsyncClient(timeout=10) as client:
+            response = await client.get(
+                "https://api.elevenlabs.io/v1/convai/conversation/get-signed-url",
+                params={"agent_id": agent_id},
+                headers={"xi-api-key": api_key},
+            )
+            response.raise_for_status()
+            signed_url = response.json().get("signed_url")
+    except (httpx.HTTPError, ValueError) as exc:
+        raise HTTPException(status_code=502, detail="Voice service temporarily unavailable.") from exc
+    if not isinstance(signed_url, str) or not signed_url.startswith("wss://api.elevenlabs.io/"):
+        raise HTTPException(status_code=502, detail="Invalid voice session response.")
+    return {"signed_url": signed_url}
