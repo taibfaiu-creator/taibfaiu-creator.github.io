@@ -11,7 +11,7 @@
       "role": "Data Scientist",
       "organization": "The National Bank (TNB)",
       "period": "May 2024 – Present",
-      "summary": "Financial dashboards, automated Python/KNIME workflows, customer analytics, banking chatbot and segmentation projects."
+      "summary": "Financial and operational banking reports using Oracle SQL and PL/SQL; Power BI dashboards; automated Python/KNIME workflows; customer analytics and segmentation; banking chatbot development; RESTful API development and integration using Python (Flask/FastAPI) and Java (JAX-RS), including token-based authentication and error handling."
     }
   ],
   "education": [
@@ -45,7 +45,22 @@
     "Oracle",
     "TensorFlow",
     "Keras",
-    "Computer Vision"
+    "Computer Vision",
+    "Java",
+    "C/C++",
+    "MATLAB",
+    "Object-Oriented Programming (OOP)",
+    "Data Structures & Algorithms",
+    "PL/SQL",
+    "Microsoft SQL Server",
+    "Relational Data Modeling",
+    "Query Optimization",
+    "Flask",
+    "FastAPI",
+    "Java JAX-RS",
+    "JSON",
+    "Bearer Token Authentication",
+    "API Testing"
   ],
   "projects": [
     {
